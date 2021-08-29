@@ -12,13 +12,23 @@ const App = () => {
     { id: 4, name: "Camisa AngularJS", price: 3200 },
   ];
   const [products, setProducts] = React.useState(listProducts);
+
+  //estado para carrinh de cmprars
+
+  const [cart, setCart] = React.useState([]);
   const date = new Date().getFullYear();
   return (
     <div className="App">
       <Header title=" Loja virtual" />
 
       {products.map((product) => (
-        <Product key={product.id} product={product} />
+        <Product
+          key={product.id}
+          product={product}
+          cart={cart}
+          products={products}
+          setCart={setCart}
+        />
       ))}
 
       <Footer date={date} />
