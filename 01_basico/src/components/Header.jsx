@@ -1,9 +1,11 @@
 import React from 'react'
 
-const Header = () => {
+const Header = (props) => {
+
+    console.log(props);
     return (
         <div clasName>
-            <h1>Loja virtual</h1>
+            <h1>{props.title}</h1>
         </div>
     )
 }

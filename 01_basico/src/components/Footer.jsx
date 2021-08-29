@@ -1,9 +1,10 @@
 import React from 'react'
 
-const Footer = () => {
+const Footer = (props) => {
     return (
         <footer>
-            <p>Todos direitos reservados &copy; </p>
+            <p>Todos direitos reservados &copy; { props.date} </p>
+             
         </footer>
     );
 }
