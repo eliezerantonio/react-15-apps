@@ -11,11 +11,17 @@ const Product = ({ product,cart, setCart, products }) => {
 
      
     }
+
+    const deleteProduct = id => {
+        const products = cart.filter(product => product.id !== id);
+        setCart(products)
+    }
     return (
         <div>
             <h1>{ name }</h1>
             <p>${price}</p>
-            <button type="button" onClick={()=> selectProduct(id)}> Comprar</button>
+            {products ? <button type="button" onClick={() => selectProduct(id)}> Comprar</button>  :   <button type="button" onClick={() => deleteProduct(id)}> Eliminar</button>
+       }
         </div>
     )
 }
