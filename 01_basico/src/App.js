@@ -18,7 +18,7 @@ const App = () => {
       <Header title=" Loja virtual" />
 
       {products.map((product) => (
-        <Product product={product} />
+        <Product key={product.id} product={product} />
       ))}
 
       <Footer date={date} />
