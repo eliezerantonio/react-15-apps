@@ -32,7 +32,7 @@ const App = () => {
         />
       ))}
 
-      <Cart /> 
+      <Cart cart={ cart}/>
       <Footer date={date} />
     </div>
   );
