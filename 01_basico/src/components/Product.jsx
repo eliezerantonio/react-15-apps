@@ -6,9 +6,10 @@ const Product = ({ product,cart, setCart, products }) => {
 
     const selectProduct = id => {
 
-        const product = products.filter(product =>product.id===id);
+        const product = products.filter(product =>product.id===id)[0];
+        setCart([...cart, product]);
 
-        console.log(product);
+     
     }
     return (
         <div>

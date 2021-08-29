@@ -1,4 +1,5 @@
 import React from "react";
+import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Product from "./components/Product";
@@ -31,6 +32,7 @@ const App = () => {
         />
       ))}
 
+      <Cart /> 
       <Footer date={date} />
     </div>
   );
