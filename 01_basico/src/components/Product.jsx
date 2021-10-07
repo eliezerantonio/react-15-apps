@@ -16,7 +16,7 @@ const Product = ({ product,cart, setCart, products }) => {
         const products = cart.filter(product => product.id !== id);
         setCart(products)
     }
-    return (
+    return ( 
         <div>
             <h1>{ name }</h1>
             <p>${price}</p>
