@@ -17,7 +17,7 @@ const App = () => {
     } else {
       localStorage.setItem("receitas", JSON.stringify([]));
     }
-  }, [receitas]);
+  }, [receitas, receitasInicias]);
 
   //funcao para buscar de
 
