@@ -1,5 +1,6 @@
 import React from 'react'
 
+import PropTypes from "prop-types";
 const Receita = ({receita,eliminarReceita}) => {
     return (
         <div className="cita">
@@ -21,4 +22,10 @@ const Receita = ({receita,eliminarReceita}) => {
     )
 }
 
+Receita.propTypes = {
+    
+    receita: PropTypes.object.isRequired,
+    eliminarReceita:PropTypes.func.isRequired
+
+}
 export default Receita

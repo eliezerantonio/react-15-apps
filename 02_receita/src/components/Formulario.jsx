@@ -1,5 +1,8 @@
 import React, { Fragment } from "react";
 import uuid from 'uuid/dist/v4';
+
+import PropTypes from "prop-types";
+
 const Formulario = ({criarReceita}) => {
   //criar stado da reeita
   const [receita, setReceita] = React.useState({
@@ -117,5 +120,10 @@ setReceita({ mascote: "",
     </Fragment>
   );
 };
+
+Formulario.propTypes = {
+
+  criarReceita:PropTypes.func.isRequired
+}
 
 export default Formulario;
