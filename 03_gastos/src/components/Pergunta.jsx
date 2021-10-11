@@ -1,7 +1,7 @@
 import React from 'react'
 import Error from './Error'
 
-const Pergunta = ({setRestante, setOrcamento}) => {
+const Pergunta = ({setRestante, setOrcamento, setMostrarPergunta}) => {
     //definir o estado
 
     const [quantidade, setQuantidade] = React.useState(0)

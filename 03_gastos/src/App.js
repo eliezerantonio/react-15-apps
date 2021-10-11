@@ -5,6 +5,7 @@ import Pergunta from "./components/Pergunta";
 const App = () => {
   const [orcamento, setOrcamento] = React.useState(0);
   const [restante, setRestante] = React.useState(0);
+  const [mostrarPergunta, setMostrarPergunta] = React.useState(false);
 
   return (
     <div className="container">
@@ -12,14 +13,20 @@ const App = () => {
         <h1>Gasto Semanal</h1>
 
         <div className="contenido-principal contenido">
-          <Pergunta setOrcamento={setOrcamento} setRestante={setRestante} />
-
-          <div className="row">
-            <div className="one-half column">
-              <Formulario />
+          {mostrarPergunta ? (
+            <Pergunta
+              setOrcamento={setOrcamento}
+              setRestante={setRestante}
+              setMostrarPergunta={setMostrarPergunta}
+            />
+          ) : (
+            <div className="row">
+              <div className="one-half column">
+                <Formulario />
+              </div>
+              <div className="one-half column">2</div>
             </div>
-            <div className="one-half column">2</div>
-          </div>
+          )}
         </div>
       </header>
     </div>
