@@ -1,14 +1,16 @@
 import React from "react";
 import Error from "./Error";
 import shortid from "shortid";
-const Formulario = () => {
+const Formulario = ({ guardarNovoGasto }) => {
   const [nome, setNome] = React.useState("");
   const [quantidade, setQuantidade] = React.useState(0);
   const [error, setError] = React.useState(false);
 
+  //quando gurdamosmnovo gastos
+
   //qiando usuario meter o gasto
 
-  const definirGastro = (e) => {
+  const definirGasto = (e) => {
     e.preventDefault();
     //validar
 
@@ -21,12 +23,15 @@ const Formulario = () => {
     const gasto = {
       nome,
       quantidade,
-      id: shortid,
+      id: shortid.generate(),
     };
+
+    console.log(gasto);
 
     //   contruit gasto
 
     //passar gasto para o compoente princiapal
+    guardarNovoGasto(gasto);
 
     //resetat form
   };
