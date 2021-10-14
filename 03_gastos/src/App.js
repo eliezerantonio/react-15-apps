@@ -1,4 +1,4 @@
-import React, { useEffect}from "react";
+import React, { useEffect } from "react";
 import Formulario from "./components/Formulario";
 import Pergunta from "./components/Pergunta";
 
@@ -10,12 +10,25 @@ const App = () => {
   const [restante, setRestante] = React.useState(0);
   const [mostrarPergunta, setMostrarPergunta] = React.useState(true);
   const [gastos, setGastos] = React.useState([]);
+  const [gasto, setGasto] = React.useState({});
+  const [criarGasto, setCriarGasto] = React.useState(false);
+
+  //UseEffect que atualiza setRestante
+  useEffect(() => {
+    if (criarGasto) {
+      //adiconar novo gasto
+      setGastos([...gastos, gasto]);
+    }
+    //restante do orcamneto
+
+    const orcamentoRestante = restante - gasto.quantidade;
+    setRestante(orcamentoRestante);
+
+    //resetar como fl
+    setCriarGasto(true);
+  }, [gasto]);
 
   //quando guardamosnovo gastos para
-
-  const guardarNovoGasto = (gasto) => {
-    setGastos([...gastos, gasto]);
-  };
 
   return (
     <div className="container">
@@ -32,7 +45,7 @@ const App = () => {
           ) : (
             <div className="row">
               <div className="one-half column">
-                <Formulario guardarNovoGasto={guardarNovoGasto} />
+                <Formulario setGasto={setGasto} setCriarGasto={setCriarGasto} />
               </div>
               <div className="one-half column">
                 <Gastos gastos={gastos} />

@@ -1,7 +1,7 @@
 import React from "react";
 import Error from "./Error";
 import shortid from "shortid";
-const Formulario = ({ guardarNovoGasto }) => {
+const Formulario = ({ setGasto, setCriarGasto }) => {
   const [nome, setNome] = React.useState("");
   const [quantidade, setQuantidade] = React.useState(0);
   const [error, setError] = React.useState(false);
@@ -31,7 +31,13 @@ const Formulario = ({ guardarNovoGasto }) => {
     //   contruit gasto
 
     //passar gasto para o compoente princiapal
-    guardarNovoGasto(gasto);
+    setGasto(gasto);
+    setCriarGasto(true);
+
+    //resetar formulario
+
+    setNome("");
+    setQuantidade(0);
 
     //resetat form
   };
