@@ -1,6 +1,6 @@
 import React from "react";
 import Error from "./Error";
-
+import PropTypes from "prop-types";
 const Pergunta = ({ setRestante, setOrcamento, setMostrarPergunta }) => {
   //definir o estado
 
@@ -48,5 +48,9 @@ const Pergunta = ({ setRestante, setOrcamento, setMostrarPergunta }) => {
     </div>
   );
 };
-
+Pergunta.propTypes = {
+  setRestante: PropTypes.func.isRequired,
+  setOrcamento: PropTypes.func.isRequired,
+  setMostrarPergunta: PropTypes.func.isRequired,
+};
 export default Pergunta;

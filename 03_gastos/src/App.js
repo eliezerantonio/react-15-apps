@@ -26,7 +26,7 @@ const App = () => {
 
     //resetar como fl
     setCriarGasto(true);
-  }, [gasto]);
+  }, [gasto, gastos, criarGasto, restante]);
 
   //quando guardamosnovo gastos para
 
