@@ -5,7 +5,7 @@ import Pergunta from "./components/Pergunta";
 const App = () => {
   const [orcamento, setOrcamento] = React.useState(0);
   const [restante, setRestante] = React.useState(0);
-  const [mostrarPergunta, setMostrarPergunta] = React.useState(false);
+  const [mostrarPergunta, setMostrarPergunta] = React.useState(true);
 
   return (
     <div className="container">

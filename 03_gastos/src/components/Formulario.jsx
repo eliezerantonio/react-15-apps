@@ -1,31 +1,71 @@
-import React from 'react'
-
+import React from "react";
+import Error from "./Error";
+import shortid from "shortid";
 const Formulario = () => {
+  const [nome, setNome] = React.useState("");
+  const [quantidade, setQuantidade] = React.useState(0);
+  const [error, setError] = React.useState(false);
 
-    const [nome,setNome  ]=React.useState('')
-    const [quantidade,setQuantidade  ]=React.useState(0)
-    return (
-        <div>
-            <form> 
-                <h2> Adicione seus gastos aqui</h2>
-                
-                <div className="campo">
-                <label>Nome gasto</label>
-                    <input type="text" className="u-full-width" placeholder="Saldo" value={nome}
-                        onChange={e=>setNome(e.target.value)}/> 
-                 
-                </div>
- 
-                <div className="campo">
-                <label>Quantidade  gasta</label>
-                    <input type="number" className="u-full-width" placeholder="3000 kz" value={ quantidade } onChange={e=>setQuantidade(e.target.value)}/> 
+  //qiando usuario meter o gasto
 
-                </div>
+  const definirGastro = (e) => {
+    e.preventDefault();
+    //validar
 
-<input type="submit" className=" button-primary u-full-width" value="Definir gasto"/>
-            </form>
+    if (quantidade < 1 || isNaN(quantidade) || nome.trim() === "") {
+      setError(true);
+      return;
+    }
+    setError(false);
+
+    const gasto = {
+      nome,
+      quantidade,
+      id: shortid,
+    };
+
+    //   contruit gasto
+
+    //passar gasto para o compoente princiapal
+
+    //resetat form
+  };
+  return (
+    <div>
+      <form onSubmit={definirGasto}>
+        <h2> Adicione seus gastos aqui</h2>
+        {error ? <Error /> : null}
+
+        <div className="campo">
+          <label>Nome gasto</label>
+          <input
+            type="text"
+            className="u-full-width"
+            placeholder="Saldo"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+          />
         </div>
-    )
-}
 
-export default Formulario
+        <div className="campo">
+          <label>Quantidade gasta</label>
+          <input
+            type="number"
+            className="u-full-width"
+            placeholder="3000 kz"
+            value={quantidade}
+            onChange={(e) => setQuantidade(e.target.value)}
+          />
+        </div>
+
+        <input
+          type="submit"
+          className=" button-primary u-full-width"
+          value="Definir gasto"
+        />
+      </form>
+    </div>
+  );
+};
+
+export default Formulario;

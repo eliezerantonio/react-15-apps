@@ -26,6 +26,7 @@ const Pergunta = ({setRestante, setOrcamento, setMostrarPergunta}) => {
         setError(false);
         setOrcamento(quantidade);
         setRestante(quantidade)
+        setMostrarPergunta(false)
        
 
     }
