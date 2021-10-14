@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 
-const ControlPresuposto = () => {
+const ControlPresuposto = ({ orcamento, restante }) => {
   return (
     <Fragment>
-      <div className="alert alert-primary ">orcamento</div>
-      <div className="alert ">Restate</div>
+      <div className="alert alert-primary ">orcamento:{orcamento}</div>
+      <div className="alert ">Restate :{restante}</div>
     </Fragment>
   );
 };

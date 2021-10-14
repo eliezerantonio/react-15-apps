@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect}from "react";
 import Formulario from "./components/Formulario";
 import Pergunta from "./components/Pergunta";
 
 import Gastos from "./components/Gastos";
 
-import ControlPresent from "./components/ControlPresuposto";
+import ControlPresuposto from "./components/ControlPresuposto";
 const App = () => {
   const [orcamento, setOrcamento] = React.useState(0);
   const [restante, setRestante] = React.useState(0);
