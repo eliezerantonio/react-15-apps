@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-
+import { obtenerDiferenciaYear } from "../helper";
 const Campo = styled.div`
   display: flex;
   margin-bottom: 1rem;
