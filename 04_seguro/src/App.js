@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import Formulario from "./components/Formulario";
 import Resumen from "./components/Resumen";
 import Resultado from "./components/Resultado";
+import Spinner from "./components/Spinner";
 
 const Contenedor = styled.div`
   max-width: 600px;
@@ -22,7 +23,7 @@ const App = () => {
       plan: "",
     },
   });
-
+  const [carregando, guardarCarregando] = React.useState(false);
   const { datos, cotacao } = resumen;
 
   return (
@@ -30,7 +31,11 @@ const App = () => {
       <Header titulo="Cotação de Seguros" />
 
       <ContedorFormularios>
-        <Formulario guadarResumen={guadarResumen} />
+        <Formulario
+          guadarResumen={guadarResumen}
+          guardarCarregando={guardarCarregando}
+        />
+        {carregando ? <Spinner /> : null}
         <Resumen datos={datos} />
         <Resultado cotacao={cotacao} />
       </ContedorFormularios>

@@ -49,7 +49,7 @@ const Error = styled.div`
   width: 100%;
   text-align: center;
 `;
-const Formulario = ({ guadarResumen }) => {
+const Formulario = ({ guadarResumen, guardarCarregando }) => {
   const [datos, guardarDatos] = React.useState({
     marca: "",
     year: "",
@@ -98,11 +98,18 @@ const Formulario = ({ guadarResumen }) => {
     //Completo 50%
     const incrementoPlan = obterPlan(plan);
     resultado = parseFloat(incrementoPlan * resultado).toFixed(2);
-    //total
-    guadarResumen({
-      cotacao: resultado,
-      datos,
-    });
+
+    guardarCarregando(true);
+
+    setTimeout(() => {
+      guardarCarregando(false);
+      //total
+      guadarResumen({
+        cotacao: resultado,
+        datos,
+      });
+    },3000);
+  
   };
 
   return (
