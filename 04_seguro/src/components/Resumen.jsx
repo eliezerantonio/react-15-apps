@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-
+import { primieraMaiscula } from "../helper";
 const ContenedorResumen = styled.div`
   padding: 1rem;
   text-align: center;
@@ -13,14 +13,14 @@ const Resumen = ({ datos }) => {
   const { marca, year, plan } = datos;
   if (marca === "" || year === "" || plan === "") return null;
   return (
-    <div>
-      <h2>Resumo de contacao</h2>;
+    <ContenedorResumen>
+      <h2>Resumo de contacao</h2>
       <ul>
-        <li> Marca: </li>
-        <li> Plan: </li>
-        <li> Ano do Auto: </li>
+        <li> Marca: {primieraMaiscula(marca)} </li>
+        <li> Plan: {primieraMaiscula(plan)} </li>
+        <li> Ano do Auto: {year} </li>
       </ul>
-    </div>
+    </ContenedorResumen>
   );
 };
 

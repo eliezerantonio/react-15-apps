@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import styled from "@emotion/styled";
 import Formulario from "./components/Formulario";
 import Resumen from "./components/Resumen";
+import Resultado from "./components/Resultado";
 
 const Contenedor = styled.div`
   max-width: 600px;
@@ -14,7 +15,7 @@ const ContedorFormularios = styled.div`
 `;
 const App = () => {
   const [resumen, guadarResumen] = React.useState({
-    contacao: 0,
+    cotacao: 0,
     datos: {
       marca: "",
       year: "",
@@ -22,7 +23,7 @@ const App = () => {
     },
   });
 
-  const { datos } = resumen;
+  const { datos, cotacao } = resumen;
 
   return (
     <Contenedor>
@@ -31,6 +32,7 @@ const App = () => {
       <ContedorFormularios>
         <Formulario guadarResumen={guadarResumen} />
         <Resumen datos={datos} />
+        <Resultado cotacao={cotacao} />
       </ContedorFormularios>
     </Contenedor>
   );

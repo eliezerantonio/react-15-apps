@@ -25,5 +25,11 @@ export function calculcarMarca(marca) {
 //calculca o tipo de seguro
 
 export function obterPlan(plan) {
-  return plan(plan === "basico") ? 1.2 : 1.5;
+  return plan === "basico" ? 1.2 : 1.5;
+}
+
+//mostra a primiera letra maiscula
+
+export function primieraMaiscula(texto) {
+  return texto.charAt(0).toUpperCase() + texto.slice(1);
 }

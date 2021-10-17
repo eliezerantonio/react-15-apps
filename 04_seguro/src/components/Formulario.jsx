@@ -100,7 +100,7 @@ const Formulario = ({ guadarResumen }) => {
     resultado = parseFloat(incrementoPlan * resultado).toFixed(2);
     //total
     guadarResumen({
-      cotizacion: resultado,
+      cotacao: resultado,
       datos,
     });
   };
