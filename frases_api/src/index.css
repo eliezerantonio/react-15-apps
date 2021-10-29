@@ -1,0 +1,31 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+* {
+  margin:0 ;
+}
+html {
+  height: 100%;
+}
+body {
+  background-image: url(logo.svg), -webkit-linear-gradient(top left, #007d35 0%, #007d35 40%, #0f574e 100%);
+  min-height: 100%;
+  background-position: center 80px, center center;
+  background-repeat:no-repeat;
+  background-size: 300px, 100% 100%;
+  display: flex;
+  align-items: flex-end;
+}
+@media (min-width:768px) {
+  body {
+    align-items: center;
+    background-size: 400px, 100% 100%;
+  }
+}
+
+#root {
+  width: 100%;
+}

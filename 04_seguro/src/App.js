@@ -37,7 +37,7 @@ const App = () => {
         />
         {carregando ? <Spinner /> : null}
         <Resumen datos={datos} />
-        <Resultado cotacao={cotacao} />
+        {!carregando ? <Resultado cotacao={cotacao} /> : null}
       </ContedorFormularios>
     </Contenedor>
   );
