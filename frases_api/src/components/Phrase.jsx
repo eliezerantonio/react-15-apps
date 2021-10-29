@@ -36,6 +36,7 @@ const PhraseContent = styled.div`
   }
 `;
 const Phrase = ({ phrase }) => {
+  if (Object.keys(phrase).length === 0) return null;
   return (
     <PhraseContent>
       <h1>{phrase.quote}</h1>
