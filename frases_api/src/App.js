@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import Phrase from "./components/Phrase";
 
 const Content = styled.div`
   display: flex;
@@ -28,7 +29,6 @@ const App = () => {
   //estado da frasesApi
 
   const [phrase, setPhrase] = React.useState({});
-  
 
   const consultAPI = async () => {
     const api = await fetch(
@@ -37,10 +37,11 @@ const App = () => {
 
     const phrase = await api.json();
 
-    console.log(phrase[0]);
+    setPhrase(phrase[0]);
   };
   return (
     <Content>
+      <Phrase phrase={phrase} />
       <Button onClick={consultAPI}>Obter Frases</Button>
     </Content>
   );
