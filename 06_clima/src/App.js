@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Formulario from "./components/Formulario";
 import "./index.css";
 import Clima from "./components/Clima";
+import Error from "./components/Error";
 const App = () => {
   const [searchfor, setSearchfor] = React.useState({
     cidade: "",
@@ -11,6 +12,7 @@ const App = () => {
 
   const [consult, setConsult] = React.useState(false);
   const [result, setResult] = React.useState({});
+  const [error, setError] = React.useState(false);
 
   const { cidade, pais } = searchfor;
 
@@ -24,10 +26,26 @@ const App = () => {
         const result = await response.json();
 
         setResult(result);
+        setConsult(false);
+
+        ///verifica se ha resultado na pedquisa da api
+        if (result.code === "404") {
+          setError(true);
+        } else {
+          setError(false);
+        }
       }
     };
     consultAPI();
   }, [cidade, consult, pais]);
+
+  let component;
+
+  if (error) {
+    component = <Error message="Sem resultados" />;
+  } else {
+    component = <Clima result={result} />;
+  }
 
   return (
     <Fragment>
@@ -43,9 +61,7 @@ const App = () => {
                 setConsult={setConsult}
               />
             </div>
-            <div className="col m6 s12">
-              <Clima result={result} />{" "}
-            </div>
+            <div className="col m6 s12">{component}</div>
           </div>
         </div>
       </div>
