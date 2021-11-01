@@ -1,4 +1,6 @@
 import React from "react";
+import Error from "./Error";
+import PropTypes from "prop-types";
 
 const Formulario = ({ searchfor, setSearchfor, setConsult }) => {
   //estado do formulario
@@ -28,10 +30,7 @@ const Formulario = ({ searchfor, setSearchfor, setConsult }) => {
   return (
     <form onSubmit={handleSubmit}>
       {error ? (
-        <p className="red darken-4 error">
-          {" "}
-          Todos os campos devem ser preenchidos
-        </p>
+        <Error message=" Todos os campos devem ser preenchidos" />
       ) : null}
       <div className="input-field col s12">
         <input
@@ -71,5 +70,9 @@ const Formulario = ({ searchfor, setSearchfor, setConsult }) => {
     </form>
   );
 };
-
+Formulario.propTypes = {
+  searchfor: PropTypes.object.isRequired,
+  setSearchfor: PropTypes.func.isRequired,
+  setConsult: PropTypes.func.isRequired,
+};
 export default Formulario;

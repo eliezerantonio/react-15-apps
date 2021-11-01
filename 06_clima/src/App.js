@@ -29,7 +29,7 @@ const App = () => {
         setConsult(false);
 
         ///verifica se ha resultado na pedquisa da api
-        if (result.code === "404") {
+        if (result.cod === "404") {
           setError(true);
         } else {
           setError(false);
