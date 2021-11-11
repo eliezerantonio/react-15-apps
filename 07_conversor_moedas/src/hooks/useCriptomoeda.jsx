@@ -21,24 +21,24 @@ const SelectC = styled.select`
   font-size: 1.2rem;
 `;
 
-const useCoin = (label, initialState, options) => {
+const useCriptomoeda = (label, initialState, options) => {
   //estado do custom Hook
   const [state, setState] = React.useState(initialState);
 
-  const Select = () => (
+  const SelectCripto = () => (
     <Fragment>
       <Label>{label}</Label>
       <SelectC onChange={(e) => setState(e.target.value)} valeu={state}>
         <option value="">- Selecione-</option>
-        {options.map((option) => (
+        {/* {options.map((option) => (
           <option key={option.codigo} value={option.codigo}>
             {option.name}
           </option>
-        ))}
+        ))} */}
       </SelectC>
     </Fragment>
   );
 
-  return [state, Select, setState];
+  return [state, SelectCripto, setState];
 };
-export default useCoin;
+export default useCriptomoeda;
