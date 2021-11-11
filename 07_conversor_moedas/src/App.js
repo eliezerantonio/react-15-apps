@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import imagem from "./cryptomonedas.png";
 
 import Formulario from "./components/Formulario";
+import axios from "axios";
 
 const Content = styled.div`
   max-width: 900px;
@@ -39,6 +40,24 @@ const Heading = styled.h1`
 `;
 
 const App = () => {
+  const [coin, setCoin] = React.useState("");
+  const [criptomoeda, setCriptomoeda] = React.useState("");
+
+  const [result, setResult] = React.useState({});
+
+  React.useEffect(() => {
+    //evitamos a execucao an primeira vez
+
+    const getCriptmoeda = async () => {
+      if (coin === "") return;
+
+      const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoeda}&tsyms=${coin}`;
+      const result = await axios.get(url);
+
+      result(result.data.DISPLAY_NAME[criptomoeda][coin]);
+    };
+    getCriptmoeda();
+  }, [coin, criptomoeda]);
   return (
     <Content>
       <div>
@@ -46,7 +65,7 @@ const App = () => {
       </div>
       <div>
         <Heading>Cite criptomoedas instantaneamente</Heading>
-        <Formulario />
+        <Formulario setCoin={setCoin} setCriptomoeda={setCriptomoeda} />
       </div>
     </Content>
   );
