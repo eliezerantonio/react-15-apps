@@ -1,11 +1,9 @@
 import React, { Fragment } from "react";
-import uuid from 'uuid/dist/v4';
 
-import PropTypes from "prop-types";
+const Formulario = () => {
+  // criar state para receita
 
-const Formulario = ({criarReceita}) => {
-  //criar stado da reeita
-  const [receita, setReceita] = React.useState({
+  const [receita, atualizarReceita] = React.useState({
     mascote: "",
     proprietario: "",
     data: "",
@@ -13,106 +11,85 @@ const Formulario = ({criarReceita}) => {
     sintomas: "",
   });
 
-  const [error, setError] = React.useState(false)
-  //funcao que se secuta cada vez que o usauiro escreve algo
-
-  const handleChange = (e) => {
-    setReceita({
-      ...receita,
-
-      [e.target.name]: e.target.value,
-    });
+  const atualizarState = (e) => {
+    atualizarReceita({ ...receita, [e.target.name]: e.target.value });
   };
 
-  //extrar validatePropTypes
+  //estrair os valores
 
   const { mascote, proprietario, data, hora, sintomas } = receita;
 
-  //quando usuairo pressiona enviar fomrulario
+  //quando usuaro pressiona enviar formulario
 
-  const submitReceita = e => {
+  const submeterReceita = (e) => {
     e.preventDefault();
 
-  //validar usuairo
-    if (mascote.trim() === ''||proprietario.trim()===""||hora.trim()===""||data.trim()==="") {
-      console.log("error")
-    setError(true)
+    // validar
+    if (
+      mascote.trim() === "" ||
+      proprietario.trim() === "" ||
+      data.trim() === "" ||
+      hora.trim() === "" ||
+      sintomas.trim() === ""
+    ) {
       return;
     }
 
-    //add um ID 
-    receita.id = uuid()
+    //add um id
 
-    //Criar receita
+    //criar receita
 
-    criarReceita(receita)
-
-    //Reiniciar o form
-setReceita({ mascote: "",
-    proprietario: "",
-    data: "",
-    hora: "",
-    sintomas: "",})
-    
-
-  }
+    //reiniciar fomrulario
+  };
 
   return (
     <Fragment>
-      <h2>Criar receita</h2>
+      <h1>Criar receita</h1>
 
-      {error ? <p className="alerta-error">Todos campos sao obrigatorios</p> : null}
-      
-      <form onSubmit={submitReceita}>
-        <label>Nome Mascote</label>
+      <form onSubmit={submeterReceita}>
+        <label>Nome da Mascote</label>
         <input
           type="text"
           name="mascote"
           className="u-full-width"
-          placeholder="Nome da mascote"
-          onChange={handleChange}
+          placeholder="Nome mascote"
+          onChange={atualizarState}
           value={mascote}
         />
-
-        <label>Nome Dono</label>
+        <label>Nome do Dono</label>
         <input
           type="text"
           name="proprietario"
           className="u-full-width"
-          placeholder="Nome do propp"
-          onChange={handleChange}
+          placeholder="Dono da mascote"
+          onChange={atualizarState}
           value={proprietario}
         />
-
         <label>Data</label>
-
         <input
           type="date"
           name="data"
           className="u-full-width"
-          onChange={handleChange}
+          onChange={atualizarState}
           value={data}
         />
-
         <label>Hora</label>
-
         <input
           type="time"
           name="hora"
           className="u-full-width"
-          onChange={handleChange}
+          onChange={atualizarState}
           value={hora}
         />
 
         <label>Sintomas</label>
 
         <textarea
+          name="sintomas"
           className="u-full-width"
-          name="Sintomas"
-          onChange={handleChange}
+          onChange={atualizarState}
           value={sintomas}
-        />
-
+        ></textarea>
         <button type="submit" className="u-full-width button-primary">
           Passar receita
         </button>
@@ -120,10 +97,5 @@ setReceita({ mascote: "",
     </Fragment>
   );
 };
-
-Formulario.propTypes = {
-
-  criarReceita:PropTypes.func.isRequired
-}
 
 export default Formulario;

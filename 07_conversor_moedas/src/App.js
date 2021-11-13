@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import imagem from "./cryptomonedas.png";
 
 import Formulario from "./components/Formulario";
+import Price from "./components/Price";
 import axios from "axios";
 
 const Content = styled.div`
@@ -66,6 +67,7 @@ const App = () => {
       <div>
         <Heading>Cite criptomoedas instantaneamente</Heading>
         <Formulario setCoin={setCoin} setCriptomoeda={setCriptomoeda} />
+        <Price result={result} />
       </div>
     </Content>
   );
