@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
+import uuid from "uuid/dist/v4";
 
-const Formulario = () => {
+const Formulario = ({ criarReceita }) => {
   // criar state para receita
 
   const [receita, atualizarReceita] = React.useState({
@@ -10,6 +11,7 @@ const Formulario = () => {
     hora: "",
     sintomas: "",
   });
+  const [error, atualizarError] = React.useState(false);
 
   const atualizarState = (e) => {
     atualizarReceita({ ...receita, [e.target.name]: e.target.value });
@@ -32,20 +34,35 @@ const Formulario = () => {
       hora.trim() === "" ||
       sintomas.trim() === ""
     ) {
+      atualizarError(true);
+
       return;
     }
 
+    atualizarError(false);
+
     //add um id
+    receita.id = uuid();
 
+    console.log(receita);
     //criar receita
-
+    criarReceita(receita);
     //reiniciar fomrulario
+    atualizarReceita({
+      mascote: "",
+      proprietario: "",
+      data: "",
+      hora: "",
+      sintomas: "",
+    });
   };
 
   return (
     <Fragment>
       <h1>Criar receita</h1>
-
+      {error ? (
+        <p className="alerta-error">Todos campos sao obrigatorios</p>
+      ) : null}
       <form onSubmit={submeterReceita}>
         <label>Nome da Mascote</label>
         <input
