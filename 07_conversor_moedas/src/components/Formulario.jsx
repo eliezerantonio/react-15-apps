@@ -17,6 +17,7 @@ const Button = styled.input`
   border-radius: 10px;
   color: #fff;
   transition: background-color 0.3s ease;
+
   &:hover {
     background-color: #326ac0;
     cursor: pointer;
@@ -67,7 +68,7 @@ const Formulario = ({ setCoin, setCriptomoeda }) => {
     //passar dados para o componento principal
     setError(false);
 
-    setError(coin);
+    setCoin(coin);
     setCriptomoeda(criptomoeda);
   };
   return (

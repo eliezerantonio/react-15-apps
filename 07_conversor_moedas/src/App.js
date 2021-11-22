@@ -55,7 +55,7 @@ const App = () => {
       const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoeda}&tsyms=${coin}`;
       const result = await axios.get(url);
 
-      result(result.data.DISPLAY_NAME[criptomoeda][coin]);
+      setResult(result.data.DISPLAY_NAME[criptomoeda][coin]);
     };
     getCriptmoeda();
   }, [coin, criptomoeda]);

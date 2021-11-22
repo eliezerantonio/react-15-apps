@@ -21,7 +21,7 @@ const PriceC = styled.p``;
 const Price = ({ result }) => {
   if (Object.keys(result).length === 0) return null;
   return (
-    <div>
+    <ResultDiv>
       <PriceC>
         Preco: <span>{result.PRICE}</span>
       </PriceC>{" "}
@@ -37,7 +37,7 @@ const Price = ({ result }) => {
       <Info>
         Ultimas atualizacoes: <span>{result.LASTUPDATE}</span>
       </Info>
-    </div>
+    </ResultDiv>
   );
 };
 
