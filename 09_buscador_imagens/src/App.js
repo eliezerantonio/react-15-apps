@@ -1,8 +1,13 @@
 import React from "react";
 import Formulario from "./components/Formulario";
+import ListaImages from "./components/ListaImages";
+
 
 const App = () => {
   const [search, setSearch] = React.useState("");
+  const [images, setImages] = React.useState([]);
+  
+
 
   React.useEffect(() => {
     const consultAPI = async () => {
@@ -16,7 +21,7 @@ const App = () => {
       const response = await fetch(url);
 
       const result = await response.json();
-      setSearch(result.hits);
+      setImages(result.hits);
     };
     consultAPI();
   }, [search]);
@@ -25,6 +30,10 @@ const App = () => {
       <div className="jumbotron">
         <p className="lead text-center">Buscador de Imagens</p>
         <Formulario setSearch={setSearch} />
+      </div>
+      <div className="row justify-content-center">
+      <ListaImages images={images}/>
+      
       </div>
     </div>
   );
