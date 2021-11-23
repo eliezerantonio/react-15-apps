@@ -53,7 +53,7 @@ const App = () => {
         <p className="lead text-center">Buscador de Imagens</p>
         <Formulario setSearch={setSearch} />
       </div>
-      <div className="row justify-content-center">
+      <div className="row justify-content-center mb-2">
         <ListaImages images={images} />
         {actualPage === 1 ? null : (
           <button
@@ -65,7 +65,7 @@ const App = () => {
           </button>
         )}
         {actualPage === totalPages ? null : (
-          <button type="button" className="btn btn-info" onClick={nextPage}>
+          <button type="button" className="btn btn-info " onClick={nextPage}>
             &raquo; Seguinte
           </button>
         )}
