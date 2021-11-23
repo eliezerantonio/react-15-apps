@@ -1,7 +1,7 @@
 import React from "react";
 import Error from "./Error";
 
-const Formulario = () => {
+const Formulario = ({ setSearch }) => {
   const [termino, saveTermino] = React.useState("");
   const [error, setError] = React.useState(false);
 
@@ -16,7 +16,9 @@ const Formulario = () => {
 
     setError(false);
     //enviar  o termino do bsuca ao componente principal
+    setSearch(termino);
   };
+  
   return (
     <form onSubmit={searchImages}>
       <div className="row">
