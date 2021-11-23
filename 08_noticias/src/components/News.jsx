@@ -1,7 +1,7 @@
 import React from "react";
 
-const News = ({ noticia }) => {
-  const { urlToImage, url, title, description, soruce } = noticia;
+const News = ({ mynew }) => {
+  const { urlToImage, url, title, description, soruce } = mynew;
   return (
     <div className="col s12 m6 14">
       <div className="card">

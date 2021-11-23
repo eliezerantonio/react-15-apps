@@ -14,8 +14,8 @@ const App = () => {
       const url = `http://newsapi.org/v2/top-headlines?country=pt&category=${category}&apiKey=38017d4116b443d3a18a33a66f3f96d9 `;
 
       const response = await fetch(url);
-      const noticia = await response.json();
-      setNews(noticia.articles);
+      const news = await response.json();
+      setNews(news.articles);
     };
     consultApi();
   }, [category, setCategory]);

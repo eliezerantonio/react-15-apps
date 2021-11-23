@@ -4,8 +4,8 @@ import News from "./News";
 const NewsList = ({ news }) => {
   return (
     <div className="row">
-      {news.map((noticia) => (
-        <News _new={noticia} key={noticia.url} />
+      {news.map((mynew) => (
+        <News mynew={mynew} key={mynew.url} />
       ))}
     </div>
   );
