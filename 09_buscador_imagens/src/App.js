@@ -27,6 +27,9 @@ const App = () => {
       setTotalPages(calculateTotalPages);
 
       //mover scool para cima apos mudar de pagina
+
+      const jumbotron = document.querySelector(".jumbotron");
+      jumbotron.scrollIntoView({ behavior: "smooth" });
     };
     consultAPI();
   }, [actualPage, search]);
