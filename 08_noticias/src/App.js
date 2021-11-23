@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import Formulario from "./components/Formulario";
+import NewsList from "./components/NewsList.jsx";
 import Header from "./components/Header";
 
 const App = () => {
@@ -13,8 +14,8 @@ const App = () => {
       const url = `http://newsapi.org/v2/top-headlines?country=pt&category=${category}&apiKey=38017d4116b443d3a18a33a66f3f96d9 `;
 
       const response = await fetch(url);
-      const news = await response.json();
-      setNews(news.articles);
+      const noticia = await response.json();
+      setNews(noticia.articles);
     };
     consultApi();
   }, [category, setCategory]);
@@ -23,7 +24,9 @@ const App = () => {
       <Header title="Buscador de noticias" />
 
       <div className="container white">
-        <Formulario />
+        <Formulario saveCategory={setCategory} />
+
+        <NewsList news={news} />
       </div>
     </Fragment>
   );
