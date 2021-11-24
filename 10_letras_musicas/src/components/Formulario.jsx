@@ -44,7 +44,7 @@ const Formulario = ({ setSearchLyrics }) => {
               <div className="row">
                 <div className="col-md-6">
                   <div className="form-group">
-                    <labe> Artista</labe>
+                    <label> Artista</label>
                     <input
                       type="text"
                       className="form-control"
@@ -57,7 +57,7 @@ const Formulario = ({ setSearchLyrics }) => {
                 </div>
                 <div className="col-md-6">
                   <div className="form-group">
-                    <labe> Artista</labe>
+                    <label> Musica</label>
                     <input
                       type="text"
                       className="form-control"

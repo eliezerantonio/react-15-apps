@@ -7,17 +7,22 @@ const App = () => {
   const [searchLyrics, setSearchLyrics] = React.useState({});
   const [lyrics, setLyrics] = React.useState("");
 
-  React.useState(() => {
+  React.useEffect(() => {
+    if (Object.keys(searchLyrics).length === 0) {
+      console.log("falhou");
+      return;
+    }
+    const { artist, music } = searchLyrics;
     const consultApiLyrics = async () => {
-      const url_letra = `https://api.lyrics.ovh/v1/${searchLyrics.artista}/${searchLyrics.cancion}`;
-      const url_info = `https://www.theaudiodb.com/api/v1/json/1/search.php?s=${searchLyrics.artista}`;
+      const url_letra = `https://api.lyrics.ovh/v1/${artist}/${music}`;
+      const url_info = `https://www.theaudiodb.com/api/v1/json/1/search.php?s=${artist}`;
 
-      const result = axios.get(url_letra);
-      setLyrics(result);
+      const result = await axios.get(url_letra);
+      setLyrics(result.data.lyrics);
     };
 
     consultApiLyrics();
-  }, [lyrics]);
+  }, [searchLyrics]);
   return (
     <Fragment>
       <Formulario setSearchLyrics={setSearchLyrics} />
