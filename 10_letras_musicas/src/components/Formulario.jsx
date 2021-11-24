@@ -1,6 +1,6 @@
 import React from "react";
 
-const Formulario = ({ setSeekLyrics }) => {
+const Formulario = ({ setSearchLyrics }) => {
   const [search, setSearch] = React.useState({ artist: "", music: "" });
 
   const { artist, music } = search;
@@ -23,7 +23,7 @@ const Formulario = ({ setSeekLyrics }) => {
     }
     setError(false);
 
-    setSeekLyrics(search);
+    setSearchLyrics(search);
   };
   return (
     <div className="bg-info">
