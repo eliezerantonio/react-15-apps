@@ -2,7 +2,14 @@ import React from "react";
 import { CategoriesContext } from "../context/CategoriesContext";
 
 const Formulario = () => {
+  const [search, saveSearch] = React.useState({ name: "", category: "" });
   const { categories } = React.useContext(CategoriesContext);
+
+  //funcoa para ler o cosnteudos
+
+  const getData = (e) => {
+    saveSearch({ ...search, [e.target.name]: e.target.value });
+  };
 
   return (
     <form className="col-12">
@@ -17,10 +24,11 @@ const Formulario = () => {
             className="form-control"
             type="text"
             placeholder="Buscar por Ingredientes"
+            onChange={getData}
           />
         </div>
         <div className="col-md-4">
-          <select className="form-control" name="Categoria">
+          <select className="form-control" name="Categoria" onChange={getData}>
             <option value="">-Selecione a Categoria-</option>
             {categories.map((category) => (
               <option key={category.strCategory} value={category.strCategory}>
