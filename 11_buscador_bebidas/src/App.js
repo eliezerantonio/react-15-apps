@@ -1,11 +1,20 @@
-import React from 'react'
+import React from "react";
+import Formulario from "./components/Formulario";
+import Header from "./components/Header";
+import CategoriesProvider from "./context/CategoriesContext";
 
 const App = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <CategoriesProvider>
+      <Header />
 
-export default App
+      <div className="container mt-5">
+        <div className="row">
+          <Formulario />
+        </div>
+      </div>
+    </CategoriesProvider>
+  );
+};
+
+export default App;
