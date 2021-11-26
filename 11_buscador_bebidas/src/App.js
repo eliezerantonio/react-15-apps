@@ -2,17 +2,20 @@ import React from "react";
 import Formulario from "./components/Formulario";
 import Header from "./components/Header";
 import CategoriesProvider from "./context/CategoriesContext";
+import RevenueProvider from "./context/RevenueProvider";
 
 const App = () => {
   return (
     <CategoriesProvider>
-      <Header />
+      <RevenueProvider>
+        <Header />
 
-      <div className="container mt-5">
-        <div className="row">
-          <Formulario />
+        <div className="container mt-5">
+          <div className="row">
+            <Formulario />
+          </div>
         </div>
-      </div>
+      </RevenueProvider>
     </CategoriesProvider>
   );
 };

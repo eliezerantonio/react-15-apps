@@ -17,8 +17,8 @@ const Formulario = () => {
         <legend> Buscar bebidas por categoria oIngrediente</legend>
       </fieldset>
 
-      <div className="row mt-4">
-        <div className="col-md-4">
+      <div className="row">
+        <div className="col-md-4 mt-5">
           <input
             name="name"
             className="form-control"
@@ -27,7 +27,7 @@ const Formulario = () => {
             onChange={getData}
           />
         </div>
-        <div className="col-md-4">
+        <div className="col-md-4 mt-5">
           <select className="form-control" name="Categoria" onChange={getData}>
             <option value="">-Selecione a Categoria-</option>
             {categories.map((category) => (
@@ -38,7 +38,7 @@ const Formulario = () => {
           </select>
         </div>
 
-        <div className="col-md=4">
+        <div className="col-md-4 mt-5">
           <input
             type="submit"
             className="btn btn-block btn-primary"
