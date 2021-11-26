@@ -54,10 +54,8 @@ const App = () => {
           <div className="col-md-6">
             <Music lyrics={lyrics} />
           </div>
-          <div className="container center">
-            {error ? <Error message="Sem resultado" /> : null}
-          </div>
         </div>
+        {error ? <Error message="Sem resultado" /> : null}
       </div>
     </Fragment>
   );
