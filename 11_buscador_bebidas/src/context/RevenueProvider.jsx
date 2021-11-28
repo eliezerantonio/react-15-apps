@@ -17,6 +17,8 @@ const RevenueProvider = (props) => {
     if (consult) {
       const getRevenue = async () => {
         const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}&c=${category}`;
+
+        console.log(url);
       };
       getRevenue();
     }
@@ -25,7 +27,7 @@ const RevenueProvider = (props) => {
     <RevenueContext.Provider
       value={{
         searchRevenue,
-        saveRevenue,
+        saveConsult,
       }}
     >
       {props.children}

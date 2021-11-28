@@ -1,9 +1,11 @@
 import React from "react";
 import { CategoriesContext } from "../context/CategoriesContext";
+import { RevenueContext } from "../context/RevenueProvider";
 
-const Formulario = () => {
+const Form = () => {
   const [search, saveSearch] = React.useState({ name: "", category: "" });
   const { categories } = React.useContext(CategoriesContext);
+  const { searchRevenue, saveConsult } = React.useContext(RevenueContext);
 
   //funcoa para ler o cosnteudos
 
@@ -12,7 +14,14 @@ const Formulario = () => {
   };
 
   return (
-    <form className="col-12">
+    <form
+      className="col-12"
+      onSubmit={(e) => {
+        e.preventDefault();
+        searchRevenue(search);
+        saveConsult(true)
+      }}
+    >
       <fieldset className="text-center">
         <legend> Buscar bebidas por categoria oIngrediente</legend>
       </fieldset>
@@ -28,7 +37,7 @@ const Formulario = () => {
           />
         </div>
         <div className="col-md-4 mt-5">
-          <select className="form-control" name="Categoria" onChange={getData}>
+          <select className="form-control" name="category" onChange={getData}>
             <option value="">-Selecione a Categoria-</option>
             {categories.map((category) => (
               <option key={category.strCategory} value={category.strCategory}>
@@ -50,4 +59,4 @@ const Formulario = () => {
   );
 };
 
-export default Formulario;
+export default Form;

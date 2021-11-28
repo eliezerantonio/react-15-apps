@@ -1,5 +1,5 @@
 import React from "react";
-import Formulario from "./components/Formulario";
+import Form from "./components/Form";
 import Header from "./components/Header";
 import CategoriesProvider from "./context/CategoriesContext";
 import RevenueProvider from "./context/RevenueProvider";
@@ -12,7 +12,7 @@ const App = () => {
 
         <div className="container mt-5">
           <div className="row">
-            <Formulario />
+            <Form />
           </div>
         </div>
       </RevenueProvider>
