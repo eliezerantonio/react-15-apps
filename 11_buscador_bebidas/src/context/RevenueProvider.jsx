@@ -3,7 +3,7 @@ import axios from "axios";
 export const RevenueContext = React.createContext();
 
 const RevenueProvider = (props) => {
-  const [revenue, saveRevenue] = React.useState([]);
+  const [revenues, saveRevenue] = React.useState([]);
   const [search, searchRevenue] = React.useState({
     ingredient: "",
     category: "",
@@ -18,14 +18,16 @@ const RevenueProvider = (props) => {
       const getRevenue = async () => {
         const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}&c=${category}`;
 
-        console.log(url);
+        const consult = await axios.get(url);
+        saveRevenue(consult.data.drinks);
       };
       getRevenue();
     }
-  }, [search, revenue, consult, name, category]);
+  }, [search, revenues, consult, name, category]);
   return (
     <RevenueContext.Provider
       value={{
+        revenues,
         searchRevenue,
         saveConsult,
       }}
