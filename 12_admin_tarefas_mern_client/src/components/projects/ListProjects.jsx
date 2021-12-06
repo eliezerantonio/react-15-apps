@@ -5,9 +5,9 @@ import Project from "./Project";
 
 const ListProjects = () => {
   const projects = [
-    { name: "Tenda virtual" },
-    { name: "Intranet" },
-    { name: "Desenho sites  na web" },
+    { name: "Loja virtual" },
+    { name: "Leva" },
+    { name: "Vida" },
   ];
   return (
     <ul className="listado-proyectos">

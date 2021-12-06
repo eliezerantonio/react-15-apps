@@ -3,21 +3,24 @@ import Task from "./Task";
 
 const ListTasks = () => {
   const tasksProjects = [
-    { name: "Eligit Elegir colores", state: true },
-    { name: "Dar o www", state: false },
-    { name: "Eligit plataforma de pago", state: true },
-    { name: "Eligir Hosting", state: false },
+    { name: "Enviar e-mail", state: true },
+    { name: "Cancelar Pedidos", state: false },
+    { name: "Enviar Pedidos", state: true },
+    { name: "Apagar Conta", state: false }, 
   ];
   return (
     <Fragment>
       <h2>Projecto: Loja virtual</h2>
-      <ul className="litado-tareas">
+      <ul className="listado-tareas">
         {tasksProjects.length === 0 ? (
           <li className="tarea"> Sem tarefas</li>
         ) : (
           tasksProjects.map((task) => <Task task={task} />)
         )}
       </ul>
+      <button type="button" className="btn btn-eliminar">
+        Eliminar Projecto &times;
+      </button>
     </Fragment>
   );
 };
