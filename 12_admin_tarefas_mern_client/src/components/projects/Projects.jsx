@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../layout/Header";
 import Sidebar from "../layout/Sidebar";
 import FormTask from "../tasks/FormTask";
+import ListProjects from "./ListProjects";
 const Projects = () => {
   return (
     <div className="contenedor-app">
@@ -10,7 +11,9 @@ const Projects = () => {
         <Header />
         <main>
           <FormTask />
-          <div className="contendedor-tareas"></div>
+          <div className="contenedor-tareas">
+            <ListProjects />
+          </div>
         </main>
       </div>
     </div>
