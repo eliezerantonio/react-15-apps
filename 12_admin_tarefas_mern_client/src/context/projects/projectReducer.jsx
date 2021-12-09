@@ -32,7 +32,7 @@ export default (state, action) => {
     case ACTUAL_PROJECT:
       return {
         ...state,
-        project: state.project.filter(
+        project: state.projects.filter(
           (project) => project.id === action.payload
         ),
       };
