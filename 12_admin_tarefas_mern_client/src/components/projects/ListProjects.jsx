@@ -1,18 +1,24 @@
 import React from "react";
 import Project from "./Project";
 
-
-
+import projectContext from "../../context/projects/projectContext";
 const ListProjects = () => {
-  const projects = [
-    { name: "Loja virtual" },
-    { name: "Leva" },
-    { name: "Vida" },
-  ];
+  const projectsContext = React.useContext(projectContext);
+
+  const { projects, getProjects } = projectsContext;
+
+  //obter projectos ao carregar components
+
+  React.useEffect(() => {
+    getProjects();
+  }, [getProjects]);
+  //revisar se existe algum projecto
+  if (projects.length === 0) return null;
+
   return (
     <ul className="listado-proyectos">
       {projects.map((project) => (
-        <Project project={project} />
+        <Project key={project.id} project={project} />
       ))}
     </ul>
   );

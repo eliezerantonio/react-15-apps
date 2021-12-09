@@ -5,7 +5,7 @@ const NewProject = () => {
   //estado do formulario
 
   const projectsContext = React.useContext(projectContext);
-  const { formulario } = projectsContext;
+  const { formulario, showForm } = projectsContext;
 
   //stado para projecto
   const [project, setProject] = React.useState({ name: "" });
@@ -26,10 +26,18 @@ const NewProject = () => {
     //mudar estados
     //reset form
   };
+  //mostrar formulario de
+  const onClick = () => {
+    showForm();
+  };
 
   return (
     <Fragment>
-      <button type="button" className="btn btn-block btn-primario">
+      <button
+        type="button"
+        className="btn btn-block btn-primario"
+        onClick={onClick}
+      >
         Novo Projecto
       </button>
       {formulario ? (
