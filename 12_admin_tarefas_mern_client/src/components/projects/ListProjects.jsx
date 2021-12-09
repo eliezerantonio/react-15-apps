@@ -11,7 +11,7 @@ const ListProjects = () => {
 
   React.useEffect(() => {
     getProjects();
-  }, [getProjects]);
+  }, []);
   //revisar se existe algum projecto
   if (projects.length === 0) return null;
 

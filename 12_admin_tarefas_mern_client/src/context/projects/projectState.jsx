@@ -2,19 +2,26 @@ import React from "react";
 
 import projectContext from "./projectContext";
 import projectReducer from "./projectReducer";
-import { FORM_PROJECT, GET_PROJECTS } from "../../types";
-
-const projects = [
-  { id: 1, name: "Loja virtual" },
-  { id: 2, name: "Leva" },
-  { id: 3, name: "Vida" },
-  { id: 4, name: "Localiza" },
-];
+import uuid from "uuid";
+import {
+  FORM_PROJECT,
+  GET_PROJECTS,
+  ADD_PROJECT,
+  VALIDATE_FORM,
+} from "../../types";
 
 const ProjectState = (props) => {
+  const projects = [
+    { id: 1, name: "Loja virtual" },
+    { id: 2, name: "Leva" },
+    { id: 3, name: "Vida" },
+    { id: 4, name: "Localiza" },
+  ];
+
   const initialState = {
     projects: [],
     formulario: false,
+    errorform: false,
   };
 
   //dispach para executar as accoes
@@ -26,20 +33,37 @@ const ProjectState = (props) => {
     dispatch({ type: FORM_PROJECT });
   };
   //obter os projectos
-  const getProjects = (projects) => {
+  const getProjects = () => {
     dispatch({
       type: GET_PROJECTS,
       payload: projects,
     });
   };
+  //adicionar novo projectState
+
+  const addProject = (project) => {
+    project.id = uuid.v4();
+    //inserir projecto na lisa
+    dispatch({ type: ADD_PROJECT, payload: project });
+  };
+
+  //VALIDAR FORMULARIO POR ERROR -
+
+  const showErrors = () => {
+    dispatch({ type: VALIDATE_FORM });
+  };
 
   return (
     <projectContext.Provider
       value={{
+        errorform: state.errorform,
         projects: state.projects,
         formulario: state.formulario,
+
         showForm,
         getProjects,
+        addProject,
+        showErrors,
       }}
     >
       {props.children}

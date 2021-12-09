@@ -5,7 +5,8 @@ const NewProject = () => {
   //estado do formulario
 
   const projectsContext = React.useContext(projectContext);
-  const { formulario, showForm } = projectsContext;
+  const { formulario, errorform, showForm, addProject, showError } =
+    projectsContext;
 
   //stado para projecto
   const [project, setProject] = React.useState({ name: "" });
@@ -22,9 +23,14 @@ const NewProject = () => {
   const onSubmitProject = (e) => {
     e.preventDefault();
     //validar o projectos
+    if (name === "") {
+      return;
+    }
 
     //mudar estados
+    addProject(project);
     //reset form
+    setProject({ name: "" });
   };
   //mostrar formulario de
   const onClick = () => {
