@@ -5,8 +5,14 @@ const NewProject = () => {
   //estado do formulario
 
   const projectsContext = React.useContext(projectContext);
-  const { formulario, errorform, showForm, addProject, showError } =
-    projectsContext;
+  const {
+    formulario,
+    errorform,
+    showForm,
+    addProject,
+    showError,
+    actualProject,
+  } = projectsContext;
 
   //stado para projecto
   const [project, setProject] = React.useState({ name: "" });

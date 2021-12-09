@@ -1,11 +1,23 @@
-import React from 'react'
+import React from "react";
 
-const Project = ({project}) => {
-    return (
-        <li>
-            <button type="button" className="btn btn-blank">{ project.name}</button>
-        </li>
-    )
-}
+import projectContext from "../../context/projects/projectContext";
 
-export default Project
+const Project = ({ project }) => {
+  const projectsContext = React.useContext(projectContext);
+
+  const { actualProject } = projectsContext;
+
+  return (
+    <li>
+      <button
+        type="button"
+        className="btn btn-blank"
+        onClick={() => actualProject(project.id)}
+      >
+        {project.name}
+      </button>
+    </li>
+  );
+};
+
+export default Project;
