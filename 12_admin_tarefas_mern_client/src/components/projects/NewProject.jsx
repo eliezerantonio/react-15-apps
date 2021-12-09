@@ -24,6 +24,7 @@ const NewProject = () => {
     e.preventDefault();
     //validar o projectos
     if (name === "") {
+      showError();
       return;
     }
 
@@ -59,6 +60,7 @@ const NewProject = () => {
           <input type="submit" className="btn btn-primario btn-block" />
         </form>
       ) : null}
+      {errorform ? <p className="error mensaje">Preencha o campo</p> : null}
     </Fragment>
   );
 };

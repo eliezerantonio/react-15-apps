@@ -49,7 +49,7 @@ const ProjectState = (props) => {
 
   //VALIDAR FORMULARIO POR ERROR -
 
-  const showErrors = () => {
+  const showError = () => {
     dispatch({ type: VALIDATE_FORM });
   };
 
@@ -63,7 +63,7 @@ const ProjectState = (props) => {
         showForm,
         getProjects,
         addProject,
-        showErrors,
+        showError,
       }}
     >
       {props.children}

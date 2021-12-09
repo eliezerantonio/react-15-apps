@@ -20,12 +20,13 @@ export default (state, action) => {
         ...state,
         projects: [...state.projects, action.payload],
         formulario: false,
+        errorform: false,
       };
 
     case VALIDATE_FORM:
       return {
         ...state,
-        errorForm: true,
+        errorform: true,
       };
     default:
       return state;
