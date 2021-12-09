@@ -1,8 +1,13 @@
 import React, { Fragment } from "react";
+import projectContext from "../../context/projects/projectContext";
 
 const NewProject = () => {
-  //stdo para projecto
+  //estado do formulario
 
+  const projectsContext = React.useContext(projectContext);
+  const { formulario } = projectsContext;
+
+  //stado para projecto
   const [project, setProject] = React.useState({ name: "" });
 
   //extraindo valores para
@@ -27,18 +32,19 @@ const NewProject = () => {
       <button type="button" className="btn btn-block btn-primario">
         Novo Projecto
       </button>
-
-      <form className="formularo-nuevo-proyecto" onSubmit={onSubmitProject}>
-        <input
-          type="text"
-          className="input-text"
-          placeholder="Nome do projecto"
-          name="name"
-          value={name}
-          onChange={onChangeProject}
-        />
-        <input type="submit" className="btn btn-primario btn-block" />
-      </form>
+      {formulario ? (
+        <form className="formularo-nuevo-proyecto" onSubmit={onSubmitProject}>
+          <input
+            type="text"
+            className="input-text"
+            placeholder="Nome do projecto"
+            name="name"
+            value={name}
+            onChange={onChangeProject}
+          />
+          <input type="submit" className="btn btn-primario btn-block" />
+        </form>
+      ) : null}
     </Fragment>
   );
 };

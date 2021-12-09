@@ -1,20 +1,32 @@
-import React, { useReducer } from "react";
+import React from "react";
 
 import projectContext from "./projectContext";
 import projectReducer from "./projectReducer";
+import { FORM_PROJECT } from "../../types";
 
-const projectState = (props) => {
+const ProjectState = (props) => {
   const initialState = {
-    newProject: false,
+    formulario: false,
   };
 
   //dispach para executar as accoes
-  const [state, dispatch] = useReducer(projectReducer, initialState);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [state, dispatch] = React.useReducer(projectReducer, initialState);
 
   //serie de funcoes para o CRUD
+  const showForm = () => { 
+  
+}
 
-    return <projectContext.Provider>
-      
-        {props.children}
-  </projectContext.Provider>;
+  return (
+    <projectContext.Provider
+      value={{
+        formulario: state.formulario,
+      }}
+    >
+      {props.children}
+    </projectContext.Provider>
+  );
 };
+
+export default ProjectState
