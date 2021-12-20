@@ -1,19 +1,21 @@
 import React, { Fragment } from "react";
 import projectContext from "../../context/projects/projectContext";
 import Task from "./Task";
-
+import taskContext from "../../context/tasks/taskContext";
 const ListTasks = () => {
+  //extrar estado inicial de projctos
   const projectsContext = React.useContext(projectContext);
 
   const { project, deleteProject } = projectsContext;
+  //obter tarefas  do projecto
+  const tasksContext = React.useContext(taskContext);
+  const { tasksproject } = tasksContext;
 
   //se nao tem projcto selecionado
   if (!project) return <h2>Seleciona um projecto</h2>;
   //arrray destruiring para extrair porjecto ACTUAL
 
   const [actualProject] = project;
-
-  const tasksProjects = [];
 
   //eliminar project
 
@@ -24,10 +26,10 @@ const ListTasks = () => {
     <Fragment>
       <h2>Projecto:{actualProject.name}</h2>
       <ul className="listado-tareas">
-        {tasksProjects.length === 0 ? (
+        {tasksproject.length === 0 ? (
           <li className="tarea"> Sem tarefas</li>
         ) : (
-          tasksProjects.map((task) => <Task task={task} />)
+          tasksproject.map((task) => <Task task={task} />)
         )}
       </ul>
       <button

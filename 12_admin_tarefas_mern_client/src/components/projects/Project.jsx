@@ -4,10 +4,12 @@ import projectContext from "../../context/projects/projectContext";
 import taskContext from "../../context/tasks/taskContext";
 
 const Project = ({ project }) => {
+  //obtendo estado de projectos
   const projectsContext = React.useContext(projectContext);
-  const tasksContext = React.useContext(taskContext);
-
+  
   const { actualProject } = projectsContext;
+//obter tarefas do projecto
+  const tasksContext = React.useContext(taskContext);
   const { getTasks } = tasksContext;
 
   //funcoa para buscar actual project e buscar suas tarefas
