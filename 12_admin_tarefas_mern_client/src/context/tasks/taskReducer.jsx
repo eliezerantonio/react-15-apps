@@ -3,6 +3,7 @@ import {
   ADD_TASK,
   VALIDATE_TASK,
   DELETE_TASK,
+  STATE_TASK,
 } from "../../types";
 
 export default (state, action) => {
@@ -28,6 +29,13 @@ export default (state, action) => {
       return {
         ...state,
         tasks: state.tasks.filter((task) => task.id !== action.payload),
+      };
+    case STATE_TASK:
+      return {
+        ...state,
+        tasks: state.tasks.map((task) =>
+          task.id === action.payload.id ? action.payload : task
+        ),
       };
     default:
       return state;
