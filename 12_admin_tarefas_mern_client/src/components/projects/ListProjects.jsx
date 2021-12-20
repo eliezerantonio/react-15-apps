@@ -13,7 +13,7 @@ const ListProjects = () => {
     getProjects();
   }, []);
   //revisar se existe algum projecto
-  if (projects.length === 0) return null;
+  if (projects.length === 0) return <p>Nenhum projecto cadastrado</p>;
 
   return (
     <ul className="listado-proyectos">

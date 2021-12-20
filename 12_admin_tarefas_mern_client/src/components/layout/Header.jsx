@@ -8,7 +8,7 @@ const Header = () => {
       </p>
 
       <nav className="nav-principal">
-        <a href="#!">Encerrar sessao</a>
+        <a href="#!">Sair</a>
       </nav>
     </header>
   );
