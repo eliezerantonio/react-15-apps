@@ -5,7 +5,7 @@ import Task from "./Task";
 const ListTasks = () => {
   const projectsContext = React.useContext(projectContext);
 
-  const { project, deleteProduct } = projectsContext;
+  const { project, deleteProject } = projectsContext;
 
   //se nao tem projcto selecionado
   if (!project) return <h2>Seleciona um projecto</h2>;
@@ -23,7 +23,7 @@ const ListTasks = () => {
   //eliminar project
 
   const onClickDelete = () => {
-    deleteProduct(project.id);
+    deleteProject(actualProject.id);
   };
   return (
     <Fragment>
