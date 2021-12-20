@@ -13,12 +13,7 @@ const ListTasks = () => {
 
   const [actualProject] = project;
 
-  const tasksProjects = [
-    { name: "Enviar e-mail", state: true },
-    { name: "Cancelar Pedidos", state: false },
-    { name: "Enviar Pedidos", state: true },
-    { name: "Apagar Conta", state: false },
-  ];
+  const tasksProjects = [];
 
   //eliminar project
 
