@@ -5,7 +5,7 @@ const Sidebar = () => {
   return (
     <aside>
       <h1>
-        MERN <span>TASKS</span>
+        Gestão de <span>Projectos</span>
       </h1>
       <NewProject />
       <div className="proyectos">

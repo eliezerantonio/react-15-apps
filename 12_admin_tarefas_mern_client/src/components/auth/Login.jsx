@@ -34,7 +34,7 @@ const Login = () => {
               id="email"
               name="email"
               value={email}
-              placeholder="Seu E-mail"
+              placeholder="E-mail"
               onChange={onChange}
             />
           </div>{" "}
@@ -45,7 +45,7 @@ const Login = () => {
               id="password"
               name="password"
               value={password}
-              placeholder="Sua password"
+              placeholder="Password"
               onChange={onChange}
             />
           </div>
@@ -57,6 +57,7 @@ const Login = () => {
             />
           </div>
         </form>
+        <br/>
         <Link to={"new-account"} className="enlance-cuenta">
           Criar Conta
         </Link>
