@@ -12,16 +12,16 @@ import {
 const TaskState = (props) => {
   const initialState = {
     tasks: [
-      { name: "Enviar e-mail", state: true, projectId: 1 },
-      { name: "Cancelar Pedidos", state: false, projectId: 2 },
-      { name: "Enviar Pedidos", state: true, projectId: 3 },
-      { name: "Apagar Conta", state: false, projectId: 4 },
-      { name: "Enviar e-mail", state: true, projectId: 1 },
-      { name: "Cancelar Pedidos", state: false, projectId: 2 },
-      { name: "Enviar Pedidos", state: true, projectId: 3 },
-      { name: "Enviar e-mail", state: true, projectId: 4 },
-      { name: "Cancelar Pedidos", state: false, projectId: 1 },
-      { name: "Enviar Pedidos", state: true, projectId: 2 },
+      { id: 1, name: "Enviar e-mail", state: true, projectId: 1 },
+      { id: 2, name: "Cancelar Pedidos", state: false, projectId: 2 },
+      { id: 3, name: "Enviar Pedidos", state: true, projectId: 3 },
+      { id: 4, name: "Apagar Conta", state: false, projectId: 4 },
+      { id: 5, name: "Enviar e-mail", state: true, projectId: 1 },
+      { id: 6, name: "Cancelar Pedidos", state: false, projectId: 2 },
+      { id: 7, name: "Enviar Pedidos", state: true, projectId: 3 },
+      { id: 8, name: "Enviar e-mail", state: true, projectId: 4 },
+      { id: 9, name: "Cancelar Pedidos", state: false, projectId: 1 },
+      { id: 10, name: "Enviar Pedidos", state: true, projectId: 2 },
     ],
     taskproject: null,
     errortask: false,
@@ -65,7 +65,7 @@ const TaskState = (props) => {
         getTasks,
         addTask,
         validateTask,
-        deleteTask
+        deleteTask,
       }}
     >
       {props.children}

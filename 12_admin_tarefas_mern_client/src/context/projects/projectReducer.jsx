@@ -20,7 +20,7 @@ export default (state, action) => {
     case ADD_PROJECT:
       return {
         ...state,
-        projects: [...state.projects, action.payload],
+        projects: [action.payload, ...state.projects],
         formulario: false,
         errorform: false,
       };
