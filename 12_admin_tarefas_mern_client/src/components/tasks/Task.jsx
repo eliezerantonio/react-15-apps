@@ -10,7 +10,8 @@ const Task = ({ task }) => {
 
   //obter contexto da terfa
   const tasksContext = React.useContext(taskContext);
-  const { deleteTask, getTasks, changeStateTask } = tasksContext;
+  const { deleteTask, getTasks, changeStateTask, saveActualTask } =
+    tasksContext;
 
   //extriando projecto actual
 
@@ -18,7 +19,7 @@ const Task = ({ task }) => {
 
   //funcao que se executa quando usuario clica botak eliminar tarefa
 
-  const taskDelete = (id) => {
+  const taskDelete = (id) => {   
     deleteTask(id);
     getTasks(actualProject.id);
   };
@@ -33,6 +34,13 @@ const Task = ({ task }) => {
     }
     changeStateTask(task);
   };
+
+  //quando usuario deseja editar uma tarefa
+
+  const selectTask = (task) => {
+    saveActualTask(task);
+  };
+
   return (
     <li className="tarea sombra">
       <p>{task.name}</p>
@@ -57,7 +65,11 @@ const Task = ({ task }) => {
         )}
       </div>
       <div className="acciones">
-        <button type="button" className="btn btn-primario">
+        <button
+          type="button"
+          className="btn btn-primario"
+          onClick={() => selectTask(task)}
+        >
           Editar
         </button>
         <button

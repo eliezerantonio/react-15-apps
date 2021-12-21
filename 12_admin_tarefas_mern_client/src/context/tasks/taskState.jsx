@@ -62,6 +62,12 @@ const TaskState = (props) => {
   const changeStateTask = (task) => {
     dispatch({ type: STATE_TASK, payload: task });
   };
+
+  //EXTRAR UMA TAEFA PARA EDITR
+
+  const saveActualTask = (task) => {
+    dispatch({ type: STATE_TASK, payload: task });
+  };
   return (
     <TaskContext.Provider
       value={{
@@ -74,6 +80,7 @@ const TaskState = (props) => {
         validateTask,
         deleteTask,
         changeStateTask,
+        saveActualTask,
       }}
     >
       {props.children}
