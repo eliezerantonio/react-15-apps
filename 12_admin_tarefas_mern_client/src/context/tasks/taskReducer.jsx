@@ -5,6 +5,8 @@ import {
   DELETE_TASK,
   STATE_TASK,
   ACTUAL_TASK,
+  UPDATE_TASK,
+  CLEAR_TASK,
 } from "../../types";
 
 export default (state, action) => {
@@ -31,10 +33,11 @@ export default (state, action) => {
         ...state,
         tasks: state.tasks.filter((task) => task.id !== action.payload),
       };
+    case UPDATE_TASK:
     case STATE_TASK:
       return {
         ...state,
-        tasks: state.tasksproject.map((task) =>
+        tasks: state.tasks.map((task) =>
           task.id === action.payload.id ? action.payload : task
         ),
       };
@@ -43,6 +46,11 @@ export default (state, action) => {
       return {
         ...state,
         taskselected: action.payload,
+      };
+    case CLEAR_TASK:
+      return {
+        ...state,
+        taskselected: null,
       };
     default:
       return state;

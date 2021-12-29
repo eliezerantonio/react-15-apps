@@ -11,8 +11,15 @@ const FormTask = () => {
 
   //obter a funcao de context das tarefas
   const tasksContext = React.useContext(taskContext);
-  const { taskselected, errortask, addTask, validateTask, getTasks } =
-    tasksContext;
+  const {
+    taskselected,
+    errortask,
+    addTask,
+    validateTask,
+    getTasks,
+    updateTask,
+    clearTask,
+  } = tasksContext;
 
   //usefect para detear uma tarefa selecionada
 
@@ -51,15 +58,16 @@ const FormTask = () => {
     }
     //verificar se estamos a editar ou salvar nova tarefa
     if (taskselected === null) {
-       //add nova tarefa ao estado de tarefas
-    task.projectId = actualProject.id;
-    task.state = false;
-    addTask(task);
+      //add nova tarefa ao estado de tarefas
+      task.projectId = actualProject.id;
+      task.state = false;
+      addTask(task);
     } else {
-      
+      //update task existent
+      updateTask(task);
+      //elimina tarefa selecionada do estado
+      clearTask();
     }
-
-   
 
     //obter e filtrar tarefa do projecto
     getTasks(actualProject.id);

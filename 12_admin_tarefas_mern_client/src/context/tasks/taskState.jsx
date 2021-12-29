@@ -9,6 +9,8 @@ import {
   DELETE_TASK,
   STATE_TASK,
   ACTUAL_TASK,
+  UPDATE_TASK,
+  CLEAR_TASK,
 } from "../../types";
 
 const TaskState = (props) => {
@@ -71,6 +73,20 @@ const TaskState = (props) => {
     dispatch({ type: ACTUAL_TASK, payload: task });
   };
 
+  //EDITAR TAREFA
+
+  const updateTask = (task) => {
+    dispatch({ type: UPDATE_TASK, payload: task });
+  };
+
+  //ELIMINA  A TAREFA SELECIONADA
+
+  const clearTask = () => {
+    dispatch({
+      type: CLEAR_TASK,
+    });
+  };
+
   return (
     <TaskContext.Provider
       value={{
@@ -85,6 +101,8 @@ const TaskState = (props) => {
         deleteTask,
         changeStateTask,
         saveActualTask,
+        updateTask,
+        clearTask,
       }}
     >
       {props.children}
