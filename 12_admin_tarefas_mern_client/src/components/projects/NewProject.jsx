@@ -11,7 +11,7 @@ const NewProject = () => {
     showForm,
     addProject,
     showError,
-    actualProject,
+  
   } = projectsContext;
 
   //stado para projecto
