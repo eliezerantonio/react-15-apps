@@ -12,8 +12,15 @@ const UserSchema = mongoose.Schema({
     trim: true,
     unique: true,
   },
-  password: {},
-  register: {},
+  password: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  register: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 module.exports = mongoose.model("User", UserSchema);
