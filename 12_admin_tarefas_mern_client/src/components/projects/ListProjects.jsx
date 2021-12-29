@@ -13,6 +13,7 @@ const ListProjects = () => {
 
   React.useEffect(() => {
     getProjects();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   //revisar se existe algum projecto
   if (projects.length === 0) return <p>Nenhum projecto cadastrado</p>;

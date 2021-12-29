@@ -1,6 +1,7 @@
 import React from "react";
 import TaskContext from "./taskContext";
 import TaskReducer from "./taskReducer";
+import uuid from "uuid";
 
 import {
   TASKS_PROJECT,
@@ -46,6 +47,7 @@ const TaskState = (props) => {
 
   //Adicionar uma tarefa ao projecto selecionado
   const addTask = (task) => {
+    task.id = uuid.v4();
     dispatch({ type: ADD_TASK, payload: task });
   };
 
