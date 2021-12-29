@@ -8,6 +8,7 @@ import {
   VALIDATE_TASK,
   DELETE_TASK,
   STATE_TASK,
+  ACTUAL_TASK,
 } from "../../types";
 
 const TaskState = (props) => {
@@ -26,6 +27,7 @@ const TaskState = (props) => {
     ],
     taskproject: null,
     errortask: false,
+    taskselected: null,
   };
 
   // criar dispatch e estados
@@ -66,14 +68,16 @@ const TaskState = (props) => {
   //EXTRAR UMA TAEFA PARA EDITR
 
   const saveActualTask = (task) => {
-    dispatch({ type: STATE_TASK, payload: task });
+    dispatch({ type: ACTUAL_TASK, payload: task });
   };
+
   return (
     <TaskContext.Provider
       value={{
         tasks: state.tasks,
         tasksproject: state.tasksproject,
         errortask: state.errortask,
+        taskselected: state.taskselected,
 
         getTasks,
         addTask,
@@ -87,4 +91,5 @@ const TaskState = (props) => {
     </TaskContext.Provider>
   );
 };
+
 export default TaskState;

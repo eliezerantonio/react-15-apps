@@ -11,7 +11,19 @@ const FormTask = () => {
 
   //obter a funcao de context das tarefas
   const tasksContext = React.useContext(taskContext);
-  const { errortask, addTask, validateTask, getTasks } = tasksContext;
+  const { taskselected, errortask, addTask, validateTask, getTasks } =
+    tasksContext;
+
+  //usefect para detear uma tarefa selecionada
+
+  React.useEffect(() => {
+    if (taskselected !== null) {
+      setTask(taskselected);
+    } else {
+      setTask({ name: "" });
+    }
+  }, [taskselected]);
+
   //stado do form
   const [task, setTask] = React.useState({ name: "" });
 
@@ -37,12 +49,17 @@ const FormTask = () => {
       validateTask();
       return;
     }
-    //passar validacao
-
-    //add nova tarefa ao estado de tarefas
+    //verificar se estamos a editar ou salvar nova tarefa
+    if (taskselected === null) {
+       //add nova tarefa ao estado de tarefas
     task.projectId = actualProject.id;
     task.state = false;
     addTask(task);
+    } else {
+      
+    }
+
+   
 
     //obter e filtrar tarefa do projecto
     getTasks(actualProject.id);
@@ -68,7 +85,7 @@ const FormTask = () => {
           <input
             type="submit"
             className="btn btn-primario btn-submit btn-block"
-            value="Adicionar tarefa"
+            value={taskselected ? "Editar" : "Adicionar"}
           />
         </div>
       </form>

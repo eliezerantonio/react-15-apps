@@ -15,3 +15,4 @@ export const DELETE_TASK = "DELETE_TASK";
 export const STATE_TASK = "STATE_TASK";
 
 export const ACTUAL_TASK = "ACTUAL_TASK";
+export const UPDATE_TASK = "UPDATE_TASK";

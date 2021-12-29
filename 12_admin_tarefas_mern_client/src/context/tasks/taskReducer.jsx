@@ -4,6 +4,7 @@ import {
   VALIDATE_TASK,
   DELETE_TASK,
   STATE_TASK,
+  ACTUAL_TASK,
 } from "../../types";
 
 export default (state, action) => {
@@ -36,6 +37,12 @@ export default (state, action) => {
         tasks: state.tasksproject.map((task) =>
           task.id === action.payload.id ? action.payload : task
         ),
+      };
+
+    case ACTUAL_TASK:
+      return {
+        ...state,
+        taskselected: action.payload,
       };
     default:
       return state;
