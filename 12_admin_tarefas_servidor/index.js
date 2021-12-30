@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 4000;
 
 //importar rotas
 
-app.use("/api/users", require("./routes/users"));
+app.use("/", require("./routes/users"));
 
 //subir server
 
