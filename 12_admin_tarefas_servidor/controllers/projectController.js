@@ -51,9 +51,27 @@ exports.updateProject = async (req, res) => {
   }
   try {
     //revisar id
+
+    let project = await Project.findById(req.params.id);
     //reviar se o projecto existe
-    //verificar criado do projecto
+
+    if (!project) {
+      return res.status(404).json({ mag: "Projecto n econtrado" });
+    }
+    //verificar criador do projecto
+
+    if (project.creator.toString() !== req.user.id) {
+      return res.status(401).json({ msg: "N autorizado" });
+    }
+
     //atualizar
+
+    project = await Project.findOneAndUpdate(
+      { _id: req.params.id },
+      { $set: newProject },
+      { new: true }
+    );
+    res.json({ project });
   } catch (error) {
     console.log(error);
     res.status(500).send("Error no servidor");
