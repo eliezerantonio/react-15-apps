@@ -9,8 +9,25 @@ const { check } = require("express-validator");
 router.post(
   "/",
   auth,
-  [check("name", "Nome deve ser preenchido").not().isEmpty()],
+  [
+    check("name", "Nome deve ser preenchido").not().isEmpty(),
+    check("project", "Projecto em falta").not().isEmpty(),
+  ],
   taskController.createTask
 );
 
+//obter tarefas por projects
+
+router.get("/", auth, taskController.getTasks);
+
+//update task s
+router.put(
+  "/:id",
+  auth,
+  [
+    check("name", "Nome deve ser preenchido").not().isEmpty(),
+    check("project", "Projecto em falta").not().isEmpty(),
+  ],
+  taskController.updateTask
+);
 module.exports = router;

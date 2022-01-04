@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken");
 module.exports = function (req, res, next) {
   //ler token do header
   const token = req.header("x-auth-token");
-  console.log(token);
   //revisar se tem token
   if (!token) {
     return res.status(401).json({ msg: "Permisao invalida" });
