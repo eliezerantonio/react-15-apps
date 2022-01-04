@@ -63,5 +63,45 @@ exports.getTasks = async (req, res) => {
   }
 };
 
-
 //atualizar tarefa
+
+exports.updateTask = async (req, res) => {
+  try {
+    //striar projcto
+
+    const { project, name, state } = req.body;
+
+    //verificar se a tarefa existe
+    let task = await Task.findById(req.params.id);
+    if (!task) {
+      return res.status(404).json({ msg: "Tarefa n encontrada" });
+    }
+    const existProject = await Project.findById(project);
+
+    if (!existProject) {
+      return res.status(404).json({ msg: "Projecto n encontrado" });
+    }
+    //revisar se projecto arctual pertence ao usuaro autenticado
+
+    if (existProject.creator.toString() !== req.user.id) {
+      return res.status(401).json({ msg: "Nao autorizado" });
+    }
+
+    //criar objec com nova informacao
+    const newTask = {};
+
+    if (name) newTask.name = name;
+
+    if (state) newTask.state = state;
+
+    //save task
+
+    task = await Task.findOneAndUpdate({ _id: req.params.id }, newTask, {
+      new: true,
+    });
+
+    res.json({ task });
+  } catch (error) {
+    res.status(500).send("Ha um erro");
+  }
+};
