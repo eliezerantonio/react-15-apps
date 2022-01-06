@@ -1,6 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import AlertContext from '../../context/alerts/alertContext'
 const NewAccount = () => {
+
+
+  const alertContext = React.useContext(AlertContext);
+
+  const {alert, showAlert} = AlertContext
   //statado iniciar sesao
 
   const [user, setUser] = React.useState({
