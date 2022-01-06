@@ -1,13 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import AlertContext from '../../context/alerts/alertContext'
+import AlertContext from "../../context/alerts/alertContext";
 const NewAccount = () => {
-
-
   const alertContext = React.useContext(AlertContext);
 
-  const {alert, showAlert} = AlertContext
+  const { alert, showAlert } = alertContext;
   //statado iniciar sesao
 
   const [user, setUser] = React.useState({
@@ -31,14 +29,24 @@ const NewAccount = () => {
 
     //validar se ha campos vazios
 
-      //password minimo 6 caracteres
+    if (
+      name.trim() === "" ||
+      email.trim() === "" ||
+      password.trim() === "" ||
+      confirmar.trim() === ""
+    ) {
+      showAlert("Deve preencher todos campos", "alert-error");
+    }
 
-      
+    //password minimo 6 caracteres
 
     //passar al action
   };
   return (
     <div className="form-usuario">
+      {alert ? (
+        <div className={`alert ${alert.category}`}>{alert.msg}</div>
+      ) : null}
       <div className="contenedor-form sombra-dark">
         <h1>Criar Nova Conta</h1>
 

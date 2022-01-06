@@ -16,15 +16,19 @@ const AlertState = (props) => {
     dispatch({ type: SHOW_ALERT, payload: { msg, category } });
 
     setTimeout(() => {
-      dispatch({ HIDE_ALERT });
+      dispatch({ type: HIDE_ALERT });
     }, 5000);
   };
 
   return (
-      <alertContext.Provider value={{
-        
-          alert:state.alert, showAlert
-    }}>{props.children}</alertContext.Provider>
+    <alertContext.Provider
+      value={{
+        alert: state.alert,
+        showAlert,
+      }}
+    >
+      {props.children}
+    </alertContext.Provider>
   );
 };
 
