@@ -105,3 +105,32 @@ exports.updateTask = async (req, res) => {
     res.status(500).send("Ha um erro");
   }
 };
+//eliminar uma tarefa
+
+exports.deleteTask = async (req, res) => {
+  try {
+    //striar projcto
+
+    const { project } = req.body;
+
+    //verificar se a tarefa existe
+    let task = await Task.findById(req.params.id);
+    if (!task) {
+      return res.status(404).json({ msg: "Tarefa n encontrada" });
+    }
+    const existProject = await Project.findById(project);
+
+    if (!existProject) {
+      return res.status(404).json({ msg: "Projecto n encontrado" });
+    }
+    //revisar se projecto arctual pertence ao usuaro autenticado
+
+    if (existProject.creator.toString() !== req.user.id) {
+      return res.status(401).json({ msg: "Nao autorizado" });
+    }
+    //eliminar
+
+    await Task.findOneAndRemove({ _id: req.params.id });
+    res.json({ msg: "Tarefa Eliminada" });
+  } catch (error) {}
+};
