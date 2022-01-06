@@ -12,11 +12,11 @@ const NewAccount = () => {
     name: "",
     email: "",
     password: "",
-    confirmar: "",
+    confirm: "",
   });
 
   //extrair user
-  const { name, email, password, confirmar } = user;
+  const { name, email, password, confirm } = user;
 
   const onChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -33,13 +33,22 @@ const NewAccount = () => {
       name.trim() === "" ||
       email.trim() === "" ||
       password.trim() === "" ||
-      confirmar.trim() === ""
+      confirm.trim() === ""
     ) {
       showAlert("Deve preencher todos campos", "alert-error");
+      return;
     }
 
     //password minimo 6 caracteres
+    if (password.length < 6) {
+      showAlert("Password minimo 6 caracteres", "alert-error");
+      return;;
+    }
 
+    if (password !== confirm) {
+      showAlert("Passwords sao diferentes", "alert-error");
+      return;
+    }
     //passar al action
   };
   return (
@@ -85,12 +94,12 @@ const NewAccount = () => {
             />
           </div>{" "}
           <div className="campo-form">
-            <label htmlFor="confirmar">Confirmar Password</label>
+            <label htmlFor="confirm">Confirmar Password</label>
             <input
               type="password"
-              id="confirmar"
-              name="confirmar"
-              value={confirmar}
+              id="confirm"
+              name="confirm"
+              value={confirm}
               placeholder="Repita sua Password"
               onChange={onChange}
             />

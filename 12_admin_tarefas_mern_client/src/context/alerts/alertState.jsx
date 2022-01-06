@@ -14,7 +14,7 @@ const AlertState = (props) => {
 
   const showAlert = (msg, category) => {
     dispatch({ type: SHOW_ALERT, payload: { msg, category } });
-
+//depois de 5 segundos limpar alerta
     setTimeout(() => {
       dispatch({ type: HIDE_ALERT });
     }, 5000);
