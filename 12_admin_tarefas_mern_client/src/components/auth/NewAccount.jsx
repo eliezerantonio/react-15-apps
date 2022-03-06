@@ -2,10 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import AlertContext from "../../context/alerts/alertContext";
+
+import AuthState from "../../context/auth/authContext";
+
 const NewAccount = () => {
   const alertContext = React.useContext(AlertContext);
 
   const { alert, showAlert } = alertContext;
+  const authContext = React.useContext(AuthState)
+  const { createAccount} = authContext;
+
   //statado iniciar sesao
 
   const [user, setUser] = React.useState({
@@ -50,6 +56,7 @@ const NewAccount = () => {
       return;
     }
     //passar al action
+    createAccount({name,email,password});
   };
   return (
     <div className="form-usuario">
