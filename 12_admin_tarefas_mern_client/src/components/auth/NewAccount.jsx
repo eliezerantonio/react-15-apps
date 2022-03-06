@@ -1,16 +1,29 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import AlertContext from "../../context/alerts/alertContext";
 
 import AuthState from "../../context/auth/authContext";
 
-const NewAccount = () => {
+const NewAccount = (props) => {
   const alertContext = React.useContext(AlertContext);
+  const history = useNavigate();
 
   const { alert, showAlert } = alertContext;
-  const authContext = React.useContext(AuthState)
-  const { createAccount} = authContext;
+  const authContext = React.useContext(AuthState);
+  const { message, authenticated, createAccount } = authContext;
+
+  //em caso de usuario seja autentica o registrar ou seja um registro duolicado
+
+  React.useEffect(() => {
+    if (authenticated) {
+      history("/projects");
+    }
+
+    if (message) {
+      showAlert(message.msg, message.msg.category);
+    }
+  }, [message, authenticated, history, showAlert]);
 
   //statado iniciar sesao
 
@@ -48,7 +61,7 @@ const NewAccount = () => {
     //password minimo 6 caracteres
     if (password.length < 6) {
       showAlert("Password minimo 6 caracteres", "alert-error");
-      return;;
+      return;
     }
 
     if (password !== confirm) {
@@ -56,7 +69,7 @@ const NewAccount = () => {
       return;
     }
     //passar al action
-    createAccount({name,email,password});
+    createAccount({ name, email, password });
   };
   return (
     <div className="form-usuario">

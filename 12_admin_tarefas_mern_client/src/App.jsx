@@ -11,8 +11,8 @@ import TaskState from "./context/tasks/taskState";
 import AlertState from "./context/alerts/alertState";
 
 import AuthState from "./context/auth/authState";
-const App = () => {
-console.log(process.env.REACT_APP_BACKEND_URL)
+const App = (props) => {
+  console.log(process.env.REACT_APP_BACKEND_URL);
   return (
     <ProjectState>
       <TaskState>
