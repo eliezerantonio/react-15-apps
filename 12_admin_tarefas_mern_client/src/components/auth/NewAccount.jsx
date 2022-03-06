@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -21,9 +22,10 @@ const NewAccount = (props) => {
     }
 
     if (message) {
-      showAlert(message.msg, message.msg.category);
+      console.log(message.category);
+      showAlert(message.msg, message.category);
     }
-  }, [message, authenticated, history, showAlert]);
+  }, [message, authenticated, history]);
 
   //statado iniciar sesao
 

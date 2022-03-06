@@ -48,3 +48,15 @@ exports.authUser = async (req, res, next) => {
     console.log(error);
   }
 };
+
+//obter usuario logado para
+
+exports.getAuthUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+    res.json({ user });
+  } catch (error) {
+    console.log(error);
+    res.statis(500).json({ msg: "Houve um erro" });
+  }
+};

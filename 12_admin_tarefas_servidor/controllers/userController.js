@@ -62,3 +62,4 @@ exports.createUser = async (req, res) => {
     res.status(400).send("Houve um erro");
   }
 };
+

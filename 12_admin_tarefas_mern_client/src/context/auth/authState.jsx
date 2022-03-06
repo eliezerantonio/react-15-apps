@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 
 import AuthContext from "./authContext";
 import AuthReducer from "./authReducer";
 
-import clientAxios from '../../config/axis'
+import clientAxios from "../../config/axis";
 import {
   REGISTER_SUCCESS,
   REGISTER_ERROR,
@@ -23,26 +24,48 @@ const AuthState = (props) => {
 
   const [state, dispatch] = React.useReducer(AuthReducer, initialState);
 
-
-  
   //funcoes
 
-
-  const createAccount = async datas => {
+  const createAccount = async (datas) => {
     try {
       const response = await clientAxios.post("/api/users", datas);
 
       console.log(response);
-      dispatch({type:REGISTER_SUCCESS,payload:response.data})
+      dispatch({ type: REGISTER_SUCCESS, payload: response.data });
+
+      //get usuario logado
+
+      getAuthUser();
     } catch (error) {
       console.log(error);
       console.log(error.response.data.msg);
       const alert = {
-   msg:error.response.data.msg,category:'alerta-error'
- }
-      dispatch({type:REGISTER_ERROR, payload :alert})
-  }
-}
+        msg: error.response.data.msg,
+        category: "alert-error",
+      };
+      dispatch({ type: REGISTER_ERROR, payload: alert });
+    }
+  };
+
+  //Retorna  usuario autenticado
+
+  const getAuthUser = async () => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      // TODO:funcao para neviar token em headers
+
+      try {
+        const response = await clientAxios.get("/api/auth");
+
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+        dispatch({ type: LOGIN_ERROR });
+      }
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -50,12 +73,10 @@ const AuthState = (props) => {
         authenticated: state.authenticated,
         user: state.user,
         message: state.message,
-        createAccount
+        createAccount,
       }}
-    >{props.children}
-
-
-
+    >
+      {props.children}
     </AuthContext.Provider>
   );
 };
