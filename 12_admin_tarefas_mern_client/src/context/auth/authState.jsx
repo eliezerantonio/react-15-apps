@@ -33,11 +33,14 @@ const AuthState = (props) => {
       const response = await clientAxios.post("/api/users", datas);
 
       console.log(response);
-      dispatch({type:REGISTER_SUCCESS})
+      dispatch({type:REGISTER_SUCCESS,payload:response.data})
     } catch (error) {
       console.log(error);
-
-      dispatch({type:REGISTER_ERROR})
+      console.log(error.response.data.msg);
+      const alert = {
+   msg:error.response.data.msg,category:'alerta-error'
+ }
+      dispatch({type:REGISTER_ERROR, payload :alert})
   }
 }
   return (
@@ -47,6 +50,7 @@ const AuthState = (props) => {
         authenticated: state.authenticated,
         user: state.user,
         message: state.message,
+        createAccount
       }}
     >{props.children}
 
