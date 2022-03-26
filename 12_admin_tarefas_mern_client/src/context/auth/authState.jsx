@@ -4,7 +4,8 @@ import React from "react";
 import AuthContext from "./authContext";
 import AuthReducer from "./authReducer";
 
-import clientAxios from "../../config/axis";
+import clientAxios from "../../config/axios";
+import tokenAuth from "../../config/token";
 import {
   REGISTER_SUCCESS,
   REGISTER_ERROR,
@@ -32,13 +33,11 @@ const AuthState = (props) => {
 
       console.log(response);
       dispatch({ type: REGISTER_SUCCESS, payload: response.data });
+      getAuthUser();
 
       //get usuario logado
-
-      getAuthUser();
     } catch (error) {
-      console.log(error);
-      console.log(error.response.data.msg);
+      console.log(error.response);
       const alert = {
         msg: error.response.data.msg,
         category: "alert-error",
@@ -54,10 +53,10 @@ const AuthState = (props) => {
 
     if (token) {
       // TODO:funcao para neviar token em headers
-
+      tokenAuth(token);
       try {
         const response = await clientAxios.get("/api/auth");
-
+        dispatch({ type: GET_USER, payload: response.data });
         console.log(response);
       } catch (error) {
         console.log(error);
