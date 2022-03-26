@@ -52,6 +52,7 @@ exports.authUser = async (req, res, next) => {
 //obter usuario logado para
 
 exports.getAuthUser = async (req, res) => {
+  console.log("fui executado");
   try {
     const user = await User.findById(req.user.id).select("-password");
     console.log(user);

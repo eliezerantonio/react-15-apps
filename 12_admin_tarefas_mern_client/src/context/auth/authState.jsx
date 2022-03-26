@@ -52,6 +52,7 @@ const AuthState = (props) => {
     const token = localStorage.getItem("token");
 
     if (token) {
+   
       // TODO:funcao para neviar token em headers
       tokenAuth(token);
       try {
@@ -59,6 +60,7 @@ const AuthState = (props) => {
         dispatch({ type: GET_USER, payload: response.data });
         console.log(response);
       } catch (error) {
+        console.log("fui chamdado error");
         console.log(error);
         dispatch({ type: LOGIN_ERROR });
       }
