@@ -353,3 +353,7 @@ aside {
   background-color: rgb(230, 78, 78);
   color: var(--blanco);
 }
+.cerrar-sesion {
+  font-size: 18px;
+  color: #fff;
+}

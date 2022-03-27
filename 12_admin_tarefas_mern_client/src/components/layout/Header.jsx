@@ -4,7 +4,7 @@ import AuthContext from "../../context/auth/authContext";
 
 const Header = () => {
   const authContext = React.useContext(AuthContext);
-  const { user, getAuthUser } = authContext;
+  const { user, getAuthUser, closeSession } = authContext;
 
   React.useEffect(() => {
     getAuthUser();
@@ -13,12 +13,17 @@ const Header = () => {
     <header className="app-header">
       {user ? (
         <p className="nombre-usuario">
-          Bem vindo Sr. <span>{user.user.name }</span>
+          Bem vindo Sr. <span>{user.user.name}</span>
         </p>
       ) : null}
 
       <nav className="nav-principal">
-        <a href="#!">Sair</a>
+        <button
+          className="btn btn-blank cerrar-sesion"
+          onClick={() => closeSession()}
+        >
+          Sair
+        </button>
       </nav>
     </header>
   );

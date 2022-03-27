@@ -79,6 +79,9 @@ const AuthState = (props) => {
       dispatch({ type: LOGIN_ERROR, payload: alert });
     }
   };
+  const closeSession = async () => {
+    dispatch({ type: CLOSE_SESSION });
+  };
 
   return (
     <AuthContext.Provider
@@ -90,6 +93,7 @@ const AuthState = (props) => {
         createAccount,
         initSession,
         getAuthUser,
+        closeSession,
       }}
     >
       {props.children}
