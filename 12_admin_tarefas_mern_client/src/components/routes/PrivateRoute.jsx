@@ -6,9 +6,13 @@ import AuthContext from "../../context/auth/authContext";
 
 const PrivateRoute = () => {
   const authContext = useContext(AuthContext);
-  const { authenticated } = authContext;
+  const { authenticated, loading, getAuthUser } = authContext;
 
-  return authenticated ? <Outlet /> : <Navigate to="/" />;
+  React.useEffect(() => {
+    getAuthUser();
+  }, []);
+
+  return !authenticated && !loading ? <Navigate to="/" /> : <Outlet />;
 };
 
 export default PrivateRoute;
