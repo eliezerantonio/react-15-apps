@@ -18,7 +18,7 @@ import {
 const AuthState = (props) => {
   const initialState = {
     token: localStorage.getItem("token"),
-    authenticated: null,
+    authenticated: false,
     user: null,
     message: null,
     loading: true,
@@ -90,7 +90,7 @@ const AuthState = (props) => {
         token: state.token,
         authenticated: state.authenticated,
         user: state.user,
-        loading:state.loading,
+        loading: state.loading,
         message: state.message,
         createAccount,
         initSession,

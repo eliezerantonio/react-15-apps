@@ -27,6 +27,7 @@ export default (state, action) => {
         ...state,
         authenticated: true,
         user: action.payload,
+        loading: false,
       };
 
     case LOGIN_ERROR:
