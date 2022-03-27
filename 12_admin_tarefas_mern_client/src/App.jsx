@@ -32,7 +32,9 @@ const App = (props) => {
                 <Route exact path="/" element={<Login />} />
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/new-account" element={<NewAccount />} />
-                <Route exact path="/projects" element={<PrivateRoute/>} />
+                <Route exact path="/projects" element={<PrivateRoute />}>
+                  <Route exact path="/projects" element={<Projects />} />
+                </Route>
               </Routes>
             </Router>
           </AuthState>
