@@ -10,6 +10,8 @@ import {
 } from "../../types";
 
 export default (state, action) => {
+
+
   switch (action.type) {
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
@@ -37,7 +39,16 @@ export default (state, action) => {
         message: action.payload,
       };
 
+    case CLOSE_SESSION:
+      localStorage.removeItem("token");
+      return {
+        ...state,
+        token: null,
+        message: action.payload,
+      };
     default:
       return state;
   }
+
+
 };
