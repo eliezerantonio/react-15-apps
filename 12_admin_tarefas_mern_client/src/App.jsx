@@ -12,6 +12,7 @@ import AlertState from "./context/alerts/alertState";
 
 import AuthState from "./context/auth/authState";
 import tokenAuth from "./config/token";
+import PrivateRoute from "./components/routes/PrivateRoute";
 
 //revisar tokenAuth
 const token = localStorage.getItem("token");
@@ -31,7 +32,7 @@ const App = (props) => {
                 <Route exact path="/" element={<Login />} />
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/new-account" element={<NewAccount />} />
-                <Route exact path="/projects" element={<Projects />} />
+                <Route exact path="/projects" element={<PrivateRoute/>} />
               </Routes>
             </Router>
           </AuthState>
