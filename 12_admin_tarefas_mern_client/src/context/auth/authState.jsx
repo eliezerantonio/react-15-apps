@@ -52,7 +52,6 @@ const AuthState = (props) => {
     const token = localStorage.getItem("token");
 
     if (token) {
-   
       // funcao para neviar token em headers
       tokenAuth(token);
       try {
@@ -60,7 +59,6 @@ const AuthState = (props) => {
         dispatch({ type: GET_USER, payload: response.data });
         console.log(response);
       } catch (error) {
-       
         console.log(error.response);
         dispatch({ type: LOGIN_ERROR });
       }
@@ -93,6 +91,7 @@ const AuthState = (props) => {
         message: state.message,
         createAccount,
         initSession,
+        getAuthUser,
       }}
     >
       {props.children}

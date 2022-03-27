@@ -11,6 +11,14 @@ import TaskState from "./context/tasks/taskState";
 import AlertState from "./context/alerts/alertState";
 
 import AuthState from "./context/auth/authState";
+import tokenAuth from "./config/token";
+
+//revisar tokenAuth
+const token = localStorage.getItem("token");
+if (token) {
+  tokenAuth(token);
+}
+
 const App = (props) => {
   console.log(process.env.REACT_APP_BACKEND_URL);
   return (
