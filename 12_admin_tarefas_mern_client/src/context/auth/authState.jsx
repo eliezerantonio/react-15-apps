@@ -57,7 +57,6 @@ const AuthState = (props) => {
       try {
         const response = await clientAxios.get("/api/auth");
         dispatch({ type: GET_USER, payload: response.data });
-        console.log(response);
       } catch (error) {
         console.log(error.response);
         dispatch({ type: LOGIN_ERROR });
@@ -73,7 +72,6 @@ const AuthState = (props) => {
       dispatch({ type: LOGIN_SUCCESS, payload: response.data });
       getAuthUser();
     } catch (error) {
-      console.log(error.response.data.msg);
       const alert = {
         msg: error.response.data.msg,
         category: "alert-error",
