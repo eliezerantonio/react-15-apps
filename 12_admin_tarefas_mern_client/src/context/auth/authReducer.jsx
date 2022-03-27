@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-fallthrough */
 import {
   REGISTER_SUCCESS,
   REGISTER_ERROR,
@@ -10,6 +12,7 @@ import {
 export default (state, action) => {
   switch (action.type) {
     case REGISTER_SUCCESS:
+    case LOGIN_SUCCESS:
       localStorage.setItem("token", action.payload.token);
 
       return {
@@ -25,7 +28,7 @@ export default (state, action) => {
       };
 
     case LOGIN_ERROR:
-      break;
+
     case REGISTER_ERROR:
       localStorage.removeItem("token");
       return {

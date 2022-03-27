@@ -1,6 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
-const Login = () => {
+import { Link, useNavigate } from "react-router-dom";
+
+import AlertContext from "../../context/alerts/alertContext";
+import authContext from "../../context/auth/authContext";
+import AuthState from "../../context/auth/authContext";
+
+const Login = (props) => {
+  //extrair vaores contexto
+  const alertContext = React.useContext(AlertContext);
+  const history = useNavigate();
+
+  const { alert, showAlert } = alertContext;
+  const authContext = React.useContext(AuthState);
+  const { message, authenticated, initSession } = authContext;
   //statado iniciar sesao
 
   const [user, setUser] = React.useState({ email: "", password: "" });
@@ -18,11 +30,30 @@ const Login = () => {
     e.preventDefault();
 
     //validar se ha campos vazios
+    if (email.trim() === "" || password.trim() === "") {
+      showAlert("Todos campos sao obragatorios", "alert-error");
+    }
 
     //passar al action
+
+    initSession({ email, password });
   };
+
+  React.useEffect(() => {
+    if (authenticated) {
+      history("/projects");
+    }
+
+    if (message) {
+      console.log(message.category);
+      showAlert(message.msg, message.category);
+    }
+  }, [message, authenticated, history]);
   return (
     <div className="form-usuario">
+      {alert ? (
+        <div className={`alert ${alert.category}`}>{alert.msg}</div>
+      ) : null}
       <div className="contenedor-form sombra-dark">
         <h1>Iniciar Sessão</h1>
 
@@ -57,7 +88,7 @@ const Login = () => {
             />
           </div>
         </form>
-        <br/>
+        <br />
         <Link to={"new-account"} className="enlance-cuenta">
           Criar Conta
         </Link>

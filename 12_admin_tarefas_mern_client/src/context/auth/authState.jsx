@@ -53,17 +53,34 @@ const AuthState = (props) => {
 
     if (token) {
    
-      // TODO:funcao para neviar token em headers
+      // funcao para neviar token em headers
       tokenAuth(token);
       try {
         const response = await clientAxios.get("/api/auth");
         dispatch({ type: GET_USER, payload: response.data });
         console.log(response);
       } catch (error) {
-        console.log("fui chamdado error");
-        console.log(error);
+       
+        console.log(error.response);
         dispatch({ type: LOGIN_ERROR });
       }
+    }
+  };
+
+  //ao iniciar a sessao
+  const initSession = async (datas) => {
+    try {
+      const response = await clientAxios.post("/api/auth", datas);
+
+      dispatch({ type: LOGIN_SUCCESS, payload: response.data });
+      getAuthUser();
+    } catch (error) {
+      console.log(error.response.data.msg);
+      const alert = {
+        msg: error.response.data.msg,
+        category: "alert-error",
+      };
+      dispatch({ type: LOGIN_ERROR, payload: alert });
     }
   };
 
@@ -75,6 +92,7 @@ const AuthState = (props) => {
         user: state.user,
         message: state.message,
         createAccount,
+        initSession,
       }}
     >
       {props.children}
