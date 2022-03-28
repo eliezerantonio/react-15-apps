@@ -13,6 +13,7 @@ export default (state, action) => {
       return { ...state, formulario: true };
 
     case GET_PROJECTS:
+      console.log(action.payload);
       return {
         ...state,
         projects: action.payload,

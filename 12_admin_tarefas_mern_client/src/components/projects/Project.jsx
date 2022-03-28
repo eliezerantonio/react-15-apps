@@ -6,9 +6,9 @@ import taskContext from "../../context/tasks/taskContext";
 const Project = ({ project }) => {
   //obtendo estado de projectos
   const projectsContext = React.useContext(projectContext);
-  
+
   const { actualProject } = projectsContext;
-//obter tarefas do projecto
+  //obter tarefas do projecto
   const tasksContext = React.useContext(taskContext);
   const { getTasks } = tasksContext;
 

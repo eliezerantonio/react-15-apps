@@ -6,15 +6,16 @@ import ListTasks from "../tasks/ListTasks";
 
 import AuthContext from "../../context/auth/authContext";
 
-
 const Projects = () => {
-  //extrair informacao de autenticacao  
-  const authContext = React.useContext(AuthContext)
+  //extrair informacao de autenticacao
+  const authContext = React.useContext(AuthContext);
   const { getAuthUser } = authContext;
 
   React.useEffect(() => {
     getAuthUser();
-  },[])
+  }, []);
+
+  
   return (
     <div className="contenedor-app">
       <Sidebar />

@@ -3,6 +3,8 @@ import React from "react";
 import projectContext from "./projectContext";
 import projectReducer from "./projectReducer";
 import uuid from "uuid";
+
+import clientAxios from "../../config/axios";
 import {
   FORM_PROJECT,
   GET_PROJECTS,
@@ -13,13 +15,6 @@ import {
 } from "../../types";
 
 const ProjectState = (props) => {
-  const projects = [
-    { id: 1, name: "Loja virtual" },
-    { id: 2, name: "Leva" },
-    { id: 3, name: "Vida" },
-    { id: 4, name: "Localiza" },
-  ];
-
   const initialState = {
     projects: [],
     formulario: false,
@@ -36,18 +31,29 @@ const ProjectState = (props) => {
     dispatch({ type: FORM_PROJECT });
   };
   //obter os projectos
-  const getProjects = () => {
-    dispatch({
-      type: GET_PROJECTS,
-      payload: projects,
-    });
+  const getProjects = async () => {
+    try {
+      const result = await clientAxios.get("/api/projects");
+      dispatch({
+        type: GET_PROJECTS,
+        payload: result.data.projects,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
   //adicionar novo projectState
 
-  const addProject = (project) => {
-    project.id = uuid.v4();
-    //inserir projecto na lisa
-    dispatch({ type: ADD_PROJECT, payload: project });
+  const addProject = async (project) => {
+    try {
+      //inserir projecto na lisa
+
+      const result = await clientAxios.post("/api/projects", project);
+      console.log(result);
+      dispatch({ type: ADD_PROJECT, payload: result.data });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   //VALIDAR FORMULARIO POR ERROR -
