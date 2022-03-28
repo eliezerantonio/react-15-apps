@@ -12,7 +12,7 @@ const PrivateRoute = () => {
     getAuthUser();
   }, []);
 
-  return authenticated && loading ? <Outlet /> : <Navigate to="/" />;
+  return authenticated && !loading ? <Outlet /> : <Navigate to="/" />;
 };
 
 export default PrivateRoute;
