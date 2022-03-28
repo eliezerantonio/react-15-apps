@@ -1,10 +1,11 @@
 import React from "react";
 
 import projectContext from "./projectContext";
+
 import projectReducer from "./projectReducer";
-import uuid from "uuid";
 
 import clientAxios from "../../config/axios";
+
 import {
   FORM_PROJECT,
   GET_PROJECTS,
@@ -12,6 +13,7 @@ import {
   VALIDATE_FORM,
   ACTUAL_PROJECT,
   DELETE_PROJECT,
+  PROJECT_ERROR,
 } from "../../types";
 
 const ProjectState = (props) => {
@@ -20,6 +22,7 @@ const ProjectState = (props) => {
     formulario: false,
     errorform: false,
     project: null,
+    message: null,
   };
 
   //dispach para executar as accoes
@@ -75,7 +78,11 @@ const ProjectState = (props) => {
       await clientAxios.delete(`api/projects/${projectId}`);
       dispatch({ type: DELETE_PROJECT, payload: projectId });
     } catch (error) {
-      console.log(error);
+      const alert = {
+        msg: "Aconteceu algum erro",
+        category: "alert-error",
+      };
+      dispatch({ type: PROJECT_ERROR, payload: alert });
     }
   };
   return (
@@ -85,6 +92,7 @@ const ProjectState = (props) => {
         projects: state.projects,
         formulario: state.formulario,
         project: state.project,
+        message: state.message,
 
         showForm,
         getProjects,

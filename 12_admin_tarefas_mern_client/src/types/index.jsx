@@ -21,6 +21,7 @@ export const CLEAR_TASK = "CLEAR_TASK";
 //alerta
 export const SHOW_ALERT = "SHOW_ALERT";
 export const HIDE_ALERT = "HIDE_ALERT";
+export const PROJECT_ERROR = "PROJECT_ERROR";
 
 //auth
 
