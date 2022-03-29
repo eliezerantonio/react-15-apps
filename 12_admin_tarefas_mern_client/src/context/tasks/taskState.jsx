@@ -1,7 +1,8 @@
 import React from "react";
 import TaskContext from "./taskContext";
 import TaskReducer from "./taskReducer";
-import uuid from "uuid";
+
+import clientAxios from "../../config/axios";
 
 import {
   TASKS_PROJECT,
@@ -16,19 +17,7 @@ import {
 
 const TaskState = (props) => {
   const initialState = {
-    tasks: [
-      { id: 1, name: "Enviar e-mail", state: true, projectId: 1 },
-      { id: 2, name: "Cancelar Pedidos", state: false, projectId: 2 },
-      { id: 3, name: "Enviar Pedidos", state: true, projectId: 3 },
-      { id: 4, name: "Apagar Conta", state: false, projectId: 4 },
-      { id: 5, name: "Enviar e-mail", state: true, projectId: 1 },
-      { id: 6, name: "Cancelar Pedidos", state: false, projectId: 2 },
-      { id: 7, name: "Enviar Pedidos", state: true, projectId: 3 },
-      { id: 8, name: "Enviar e-mail", state: true, projectId: 4 },
-      { id: 9, name: "Cancelar Pedidos", state: false, projectId: 1 },
-      { id: 10, name: "Enviar Pedidos", state: true, projectId: 2 },
-    ],
-    taskproject: null,
+    tasksproject: [],
     errortask: false,
     taskselected: null,
   };
@@ -46,9 +35,14 @@ const TaskState = (props) => {
   };
 
   //Adicionar uma tarefa ao projecto selecionado
-  const addTask = (task) => {
-    task.id = uuid.v4();
-    dispatch({ type: ADD_TASK, payload: task });
+  const addTask = async (task) => {
+    try {
+      const result = await clientAxios.post("/api/tasks", task);
+      console.log(result);
+      dispatch({ type: ADD_TASK, payload: task });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   //valida e mostra error caso seja necessario
@@ -92,7 +86,7 @@ const TaskState = (props) => {
   return (
     <TaskContext.Provider
       value={{
-        tasks: state.tasks,
+    
         tasksproject: state.tasksproject,
         errortask: state.errortask,
         taskselected: state.taskselected,

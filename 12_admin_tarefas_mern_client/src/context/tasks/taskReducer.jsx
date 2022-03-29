@@ -14,14 +14,14 @@ export default (state, action) => {
     case TASKS_PROJECT:
       return {
         ...state,
-        tasksproject: state.tasks.filter(
+        tasksproject: state.tasksproject.filter(
           (task) => task.projectId === action.payload
         ),
       };
     case ADD_TASK:
       return {
         ...state,
-        tasks: [action.payload, ...state.tasks],
+        tasksproject: [action.payload, ...state.tasksproject],
         errortask: false,
       };
 
@@ -31,13 +31,13 @@ export default (state, action) => {
     case DELETE_TASK:
       return {
         ...state,
-        tasks: state.tasks.filter((task) => task.id !== action.payload),
+        tasksproject: state.tasksproject.filter((task) => task.id !== action.payload),
       };
     case UPDATE_TASK:
     case STATE_TASK:
       return {
         ...state,
-        tasks: state.tasks.map((task) =>
+        tasksproject: state.tasksproject.map((task) =>
           task.id === action.payload.id ? action.payload : task
         ),
       };
