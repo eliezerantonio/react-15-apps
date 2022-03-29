@@ -1,8 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import AlertContext from "../../context/alerts/alertContext";
-import authContext from "../../context/auth/authContext";
 import AuthState from "../../context/auth/authContext";
 
 const Login = (props) => {

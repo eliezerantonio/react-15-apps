@@ -1,4 +1,5 @@
-import React, { useContext, useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, } from "react";
 
 import { Navigate, Outlet } from "react-router-dom";
 
@@ -10,7 +11,7 @@ const PrivateRoute = () => {
 
   React.useEffect(() => {
     getAuthUser();
-  }, []);
+  }, [ ]);
 
   return authenticated && !loading ? <Outlet /> : <Navigate to="/" />;
 };
