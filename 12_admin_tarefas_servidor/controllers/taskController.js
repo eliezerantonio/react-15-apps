@@ -90,9 +90,9 @@ exports.updateTask = async (req, res) => {
     //criar objec com nova informacao
     const newTask = {};
 
-    if (name) newTask.name = name;
+     newTask.name = name;
 
-    if (state) newTask.state = state;
+     newTask.state = state;
 
     //save task
 

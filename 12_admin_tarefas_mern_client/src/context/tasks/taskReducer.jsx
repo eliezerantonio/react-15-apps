@@ -32,11 +32,10 @@ export default (state, action) => {
         tasksproject: state.tasksproject.filter((task) => task._id !== action.payload),
       };
     case UPDATE_TASK:
-    case STATE_TASK:
       return {
         ...state,
         tasksproject: state.tasksproject.map((task) =>
-          task.id === action.payload.id ? action.payload : task
+          task._id === action.payload._id ? action.payload : task
         ),
       };
 

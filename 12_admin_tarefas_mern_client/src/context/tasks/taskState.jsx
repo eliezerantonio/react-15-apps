@@ -63,18 +63,12 @@ const TaskState = (props) => {
 
   const deleteTask = async (id, project) => {
     try {
-      await clientAxios.delete(`/api/tasks/${id}`,{params:{project}});
+      await clientAxios.delete(`/api/tasks/${id}`, { params: { project } });
 
       dispatch({ type: DELETE_TASK, payload: id });
     } catch (error) {
       console.logo(error);
     }
-  };
-
-  //muda o estado da tarefa
-
-  const changeStateTask = (task) => {
-    dispatch({ type: STATE_TASK, payload: task });
   };
 
   //EXTRAR UMA TAEFA PARA EDITR
@@ -85,8 +79,12 @@ const TaskState = (props) => {
 
   //EDITAR TAREFA
 
-  const updateTask = (task) => {
-    dispatch({ type: UPDATE_TASK, payload: task });
+  const updateTask =async (task) => {
+    try {
+      const result = await clientAxios.put(`/api/tasks/${task._id}`, task)
+      
+      dispatch({ type: UPDATE_TASK, payload: result.data.task });
+    } catch (error) {}
   };
 
   //ELIMINA  A TAREFA SELECIONADA
@@ -108,7 +106,7 @@ const TaskState = (props) => {
         addTask,
         validateTask,
         deleteTask,
-        changeStateTask,
+
         saveActualTask,
         updateTask,
         clearTask,

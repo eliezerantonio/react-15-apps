@@ -10,7 +10,7 @@ const Task = ({ task }) => {
 
   //obter contexto da terfa
   const tasksContext = React.useContext(taskContext);
-  const { deleteTask, getTasks, changeStateTask, saveActualTask } =
+  const { deleteTask, getTasks, updateTask, saveActualTask } =
     tasksContext;
 
   //extriando projecto actual
@@ -32,7 +32,7 @@ const Task = ({ task }) => {
     } else {
       task.state = true;
     }
-    changeStateTask(task);
+    updateTask(task);
   };
 
   //quando usuario deseja editar uma tarefa
