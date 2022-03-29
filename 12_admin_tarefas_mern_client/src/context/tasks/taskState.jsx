@@ -30,8 +30,16 @@ const TaskState = (props) => {
 
   //obter tarefas de um projetos
 
-  const getTasks = (projectId) => {
-    dispatch({ type: TASKS_PROJECT, payload: projectId });
+  const getTasks = async (project) => {
+    try {
+      const result = await clientAxios.get("/api/tasks", {
+        params: { project },
+      });
+      dispatch({ type: TASKS_PROJECT, payload: result.data.tasks });
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   //Adicionar uma tarefa ao projecto selecionado
@@ -86,7 +94,6 @@ const TaskState = (props) => {
   return (
     <TaskContext.Provider
       value={{
-    
         tasksproject: state.tasksproject,
         errortask: state.errortask,
         taskselected: state.taskselected,

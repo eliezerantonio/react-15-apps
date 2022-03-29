@@ -14,9 +14,7 @@ export default (state, action) => {
     case TASKS_PROJECT:
       return {
         ...state,
-        tasksproject: state.tasksproject.filter(
-          (task) => task.projectId === action.payload
-        ),
+        tasksproject: action.payload,
       };
     case ADD_TASK:
       return {

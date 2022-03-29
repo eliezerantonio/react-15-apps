@@ -42,7 +42,7 @@ exports.getTasks = async (req, res) => {
   try {
     //striar projcto
 
-    const { project } = req.body;
+    const { project } = req.query;
     const existProject = await Project.findById(project);
 
     if (!existProject) {

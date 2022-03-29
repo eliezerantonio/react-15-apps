@@ -59,8 +59,8 @@ const FormTask = () => {
     //verificar se estamos a editar ou salvar nova tarefa
     if (taskselected === null) {
       //add nova tarefa ao estado de tarefas
-      task.projectId = actualProject.id;
-      task.state = false;
+      task.project = actualProject._id;
+     
       addTask(task);
     } else {
       //update task existent
