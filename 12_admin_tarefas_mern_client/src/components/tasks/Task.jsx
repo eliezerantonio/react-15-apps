@@ -19,8 +19,8 @@ const Task = ({ task }) => {
 
   //funcao que se executa quando usuario clica botak eliminar tarefa
 
-  const taskDelete = (id) => {   
-    deleteTask(id);
+  const taskDelete = (id) => {
+    deleteTask(id, actualProject._id);
     getTasks(actualProject.id);
   };
 
@@ -75,7 +75,7 @@ const Task = ({ task }) => {
         <button
           type="button"
           className="btn btn-secundario"
-          onClick={() => taskDelete(task.id)}
+          onClick={() => taskDelete(task._id)}
         >
           Eliminar
         </button>

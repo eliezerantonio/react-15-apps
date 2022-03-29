@@ -111,7 +111,7 @@ exports.deleteTask = async (req, res) => {
   try {
     //striar projcto
 
-    const { project } = req.body;
+    const { project } = req.query;
 
     //verificar se a tarefa existe
     let task = await Task.findById(req.params.id);
