@@ -60,7 +60,7 @@ const FormTask = () => {
     if (taskselected === null) {
       //add nova tarefa ao estado de tarefas
       task.project = actualProject._id;
-     
+
       addTask(task);
     } else {
       //update task existent
@@ -97,7 +97,7 @@ const FormTask = () => {
           />
         </div>
       </form>
-      {errortask ? <p className="mensaje error">Tarefa invalida</p> : null}
+      {errortask ? <p className="mensaje error">Tarefa inválida</p> : null}
     </div>
   );
 };

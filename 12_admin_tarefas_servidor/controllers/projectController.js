@@ -17,7 +17,7 @@ exports.createProject = async (req, res) => {
     res.json(project);
   } catch (error) {
     console.log(error);
-    res.status(500).send("Errordo servidor");
+    res.status(500).send("Error servidor");
   }
 };
 
