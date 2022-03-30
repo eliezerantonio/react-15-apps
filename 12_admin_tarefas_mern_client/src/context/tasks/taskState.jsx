@@ -46,7 +46,7 @@ const TaskState = (props) => {
     try {
       const result = await clientAxios.post("/api/tasks", task);
       console.log(result);
-      dispatch({ type: ADD_TASK, payload: task });
+      dispatch({ type: ADD_TASK, payload: result.data.task });
     } catch (error) {
       console.log(error);
     }
@@ -78,12 +78,14 @@ const TaskState = (props) => {
 
   //EDITAR TAREFA
 
-  const updateTask =async (task) => {
+  const updateTask = async (task) => {
     try {
-      const result = await clientAxios.put(`/api/tasks/${task._id}`, task)
-      
+      const result = await clientAxios.put(`/api/tasks/${task._id}`, task);
+
       dispatch({ type: UPDATE_TASK, payload: result.data.task });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   //ELIMINA  A TAREFA SELECIONADA

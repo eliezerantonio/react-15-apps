@@ -18,7 +18,7 @@ router.post(
 
 //obter tarefas por projects
 
-router.get("/", auth, taskController.getTasks);
+router.get("", auth, taskController.getTasks);
 
 //update task s
 router.put(
