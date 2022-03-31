@@ -1,16 +1,22 @@
 //funcoes que mudam o estado
 
 import { ADD_PRODUCT, ADD_PRODUCT_SUCCESS, ADD_PRODUCT_ERROR } from "../types";
-
+import clientAxios from "../config/axios";
 //criar novo produto
 
 export function createNewProductAction(product) {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(addProduct());
 
     try {
+      //inserir produto na bd
+      await clientAxios.post("/products", product);
+
+      ///case der certo atualizar estado
       dispatch(addProductSuccess(product));
     } catch (e) {
+      console.log(e);
+      //se ha um error mudar estado
       dispatch(addProductError(true));
     }
   };
@@ -18,14 +24,14 @@ export function createNewProductAction(product) {
 
 const addProduct = () => ({
   type: ADD_PRODUCT,
-  payload:true
+  payload: true,
 });
 
-const addProductSuccess = product => ({
+const addProductSuccess = (product) => ({
   type: ADD_PRODUCT_SUCCESS,
-  payload:product
+  payload: product,
 });
-const addProductError = state => ({
+const addProductError = (state) => ({
   type: ADD_PRODUCT_ERROR,
-  payload:state
+  payload: state,
 });
