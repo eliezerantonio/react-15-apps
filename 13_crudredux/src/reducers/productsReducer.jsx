@@ -36,6 +36,7 @@ export default function (state = initalState, action) {
 
     case GET_PRODUCTS_ERROR:
     case ADD_PRODUCT_ERROR:
+    case DELETE_PRODUCT_ERROR:
       return {
         ...state,
         loading: false,

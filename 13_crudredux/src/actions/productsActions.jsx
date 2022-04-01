@@ -89,10 +89,10 @@ export function deleteProductAction(id) {
     dispatch(getProductDelete(id));
     try {
       const response = await clientAxios.delete(`/products/${id}`);
-      dispatch(deleteProductSuccess())
+      dispatch(deleteProductSuccess());
     } catch (e) {
       console.log(e);
-         dispatch(deleteProductError())
+      dispatch(deleteProductError());
     }
   };
 }
@@ -102,12 +102,11 @@ const getProductDelete = (id) => ({
   payload: id,
 });
 
-
 const deleteProductSuccess = () => ({
-  type:DELETE_PRODUCT_SUCCESS
+  type: DELETE_PRODUCT_SUCCESS,
+});
 
-})
-
-const deleteProductError(){
-  
-}
+const deleteProductError = () => ({
+  type: DELETE_PRODUCT_ERROR,
+  payload: true,
+});
