@@ -2,7 +2,11 @@
 import React from "react";
 import { createNewProductAction } from "../actions/productsActions";
 import { useDispatch, useSelector } from "react-redux";
+
+import { useNavigate } from "react-router-dom";
 const NewProduct = () => {
+
+  const history = useNavigate();
   //estado do component   de
 
   const [name, setName] = React.useState("");
@@ -31,6 +35,9 @@ const NewProduct = () => {
 
     //criar new product
     addProduct({ name, price });
+    //redireconar
+
+    history("/");
   };
   return (
     <div className="row justify-content-center my-5">
