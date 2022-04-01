@@ -1,6 +1,13 @@
 //funcoes que mudam o estado
 
-import { ADD_PRODUCT, ADD_PRODUCT_SUCCESS, ADD_PRODUCT_ERROR } from "../types";
+import {
+  ADD_PRODUCT,
+  ADD_PRODUCT_SUCCESS,
+  ADD_PRODUCT_ERROR,
+  GET_PRODUCTS,
+  GET_PRODUCTS_SUCCESS,
+  GET_PRODUCTS_ERROR,
+} from "../types";
 import clientAxios from "../config/axios";
 import Swal from "sweetalert2";
 //criar novo produto
@@ -39,4 +46,20 @@ const addProductSuccess = (product) => ({
 const addProductError = (state) => ({
   type: ADD_PRODUCT_ERROR,
   payload: state,
+});
+
+
+//buscando produtos
+
+export function getProductsAction() {
+  return async dispatch => {
+    
+    dispatch(getProducts())
+  }
+}
+
+
+const getProducts = () => ({
+  type: GET_PRODUCTS,
+  payload: true
 });
