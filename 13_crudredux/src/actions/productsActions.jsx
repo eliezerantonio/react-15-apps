@@ -27,7 +27,11 @@ export function createNewProductAction(product) {
       dispatch(addProductSuccess(product));
 
       //mostrar alerter
-      Swal.fire("Sucesso", "Produto adicionado com sucesso", "success");
+      Swal.fire({
+        title: "Sucesso",
+        text: "Produto adicionado com sucesso",
+        icon: "success",
+      });
     } catch (e) {
       console.log(e);
       //se ha um error mudar estado
@@ -90,6 +94,7 @@ export function deleteProductAction(id) {
     try {
       const response = await clientAxios.delete(`/products/${id}`);
       dispatch(deleteProductSuccess());
+      Swal.fire("Deleted!", "Your file has been deleted.", "success");
     } catch (e) {
       console.log(e);
       dispatch(deleteProductError());
