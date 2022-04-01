@@ -48,18 +48,33 @@ const addProductError = (state) => ({
   payload: state,
 });
 
-
 //buscando produtos
 
 export function getProductsAction() {
-  return async dispatch => {
-    
-    dispatch(getProducts())
-  }
-}
+  return async (dispatch) => {
+    dispatch(getProducts());
 
+    try {
+      const response = await clientAxios.get("/products");
+      dispatch(getProductsSuccess(response.data));
+    } catch (e) {
+      console.log(e);
+      dispatch(getProductsError());
+    }
+  };
+}
 
 const getProducts = () => ({
   type: GET_PRODUCTS,
-  payload: true
+  payload: true,
+});
+
+const getProductsSuccess = (products) => ({
+  type: GET_PRODUCTS_SUCCESS,
+  payload: products,
+});
+
+const getProductsError = () => ({
+  type: GET_PRODUCTS_ERROR,
+  payload: true,
 });
