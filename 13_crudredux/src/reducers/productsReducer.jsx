@@ -5,6 +5,9 @@ import {
   GET_PRODUCTS,
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_ERROR,
+  DELETE_PRODUCT,
+  DELETE_PRODUCT_ERROR,
+  DELETE_PRODUCT_SUCCESS,
 } from "../types";
 
 //cada reducer tem seu proprio estado
@@ -13,6 +16,7 @@ const initalState = {
   products: [],
   error: null,
   loading: false,
+  deleteProdcuct: null,
 };
 
 export default function (state = initalState, action) {
@@ -44,6 +48,12 @@ export default function (state = initalState, action) {
         loading: false,
         error: null,
         products: [...state.products, action.payload],
+      };
+
+    case DELETE_PRODUCT:
+      return {
+        ...state,
+        deleteProdcuct: action.payload,
       };
 
     default:
