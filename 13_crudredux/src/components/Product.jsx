@@ -9,6 +9,7 @@ import { deleteProductAction } from "../actions/productsActions";
 
 const Product = ({ product }) => {
   const { name, price, id } = product;
+
   const dispatch = useDispatch();
 
   //confirmar de dejsa eliminar
@@ -24,7 +25,7 @@ const Product = ({ product }) => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Sim, Eliminar",
-      canncelButtonText: "Cancelar",
+      cancelButtonText: "Cancelar",
       showClass: {
         popup: "animate__animated animate__fadeInDown",
       },
@@ -41,10 +42,10 @@ const Product = ({ product }) => {
   };
   return (
     <tr>
+      <td>{name}</td>
       <td>
-        <span className="font-weight-bold">${name}</span>
+        <span className="font-weight-bold">{price}</span>
       </td>
-      <td>{price}</td>
       <td className="acciones">
         <Link to={`/products/edit/${id}`} className="btn btn-primary mr-2">
           Editar

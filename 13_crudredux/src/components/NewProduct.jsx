@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 const NewProduct = () => {
-
   const history = useNavigate();
   //estado do component   de
 
@@ -19,7 +18,6 @@ const NewProduct = () => {
   const loading = useSelector((state) => state.products.loading);
   const error = useSelector((state) => state.products.error);
 
-  console.log(loading);
   //chama a acao de productAction
   const addProduct = (product) => dispatch(createNewProductAction(product));
   const submitNewProduct = (e) => {
@@ -58,6 +56,8 @@ const NewProduct = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />{" "}
+              </div>{" "}
+              <div className="form-group">
                 <label>Price</label>
                 <input
                   type="number"
@@ -67,13 +67,13 @@ const NewProduct = () => {
                   value={price}
                   onChange={(e) => setPrice(Number(e.target.value))}
                 />
-                <button
-                  type="submit"
-                  className="btn btn-primary font-weight-bold text-uppercase d-block w-100 my-2"
-                >
-                  Adicionar
-                </button>
               </div>
+              <button
+                type="submit"
+                className="btn btn-primary font-weight-bold text-uppercase d-block w-100 my-2"
+              >
+                Adicionar
+              </button>
             </form>
             {loading ? <p>Carregando...</p> : null}
             {error ? (

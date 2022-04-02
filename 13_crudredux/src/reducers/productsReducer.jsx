@@ -16,7 +16,7 @@ const initalState = {
   products: [],
   error: null,
   loading: false,
-  deleteProdcuct: null,
+  deleteProduct: null,
 };
 
 export default function (state = initalState, action) {
@@ -54,15 +54,15 @@ export default function (state = initalState, action) {
     case DELETE_PRODUCT:
       return {
         ...state,
-        deleteProdcuct: action.payload,
+        deleteProduct: action.payload,
       };
     case DELETE_PRODUCT_SUCCESS:
       return {
         ...state,
         products: state.products.filter(
-          (product) => product.id !== state.deleteProdcuct
+          (product) => product.id !== state.deleteProduct
         ),
-        deleteProdcuct: null,
+        deleteProduct: null,
       };
     default:
       return state;

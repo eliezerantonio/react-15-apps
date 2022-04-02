@@ -11,8 +11,8 @@ import {
   DELETE_PRODUCT_ERROR,
   DELETE_PRODUCT_SUCCESS,
 } from "../types";
-import clientAxios from "../config/axios";
 import Swal from "sweetalert2";
+import axios from "axios";
 //criar novo produto
 
 export function createNewProductAction(product) {
@@ -21,7 +21,7 @@ export function createNewProductAction(product) {
 
     try {
       //inserir produto na bd
-      await clientAxios.post("/products", product);
+      await axios.post("http://localhost:4000/products", product);
 
       ///case der certo atualizar estado
       dispatch(addProductSuccess(product));
@@ -62,7 +62,7 @@ export function getProductsAction() {
     dispatch(getProducts());
 
     try {
-      const response = await clientAxios.get("/products");
+      const response = await axios.get("http://localhost:4000/products");
       dispatch(getProductsSuccess(response.data));
     } catch (e) {
       console.log(e);
@@ -92,7 +92,7 @@ export function deleteProductAction(id) {
   return async (dispatch) => {
     dispatch(getProductDelete(id));
     try {
-      const response = await clientAxios.delete(`/products/${id}`);
+      await axios.delete(`http://localhost:4000/products/${id}`);
       dispatch(deleteProductSuccess());
       Swal.fire("Deleted!", "Your file has been deleted.", "success");
     } catch (e) {

@@ -1,29 +1,9 @@
 {
-  "productos": [
+  "products": [
     {
-      "id": 1,
-      "name": "Jugo de Zanahoria",
-      "price": "31111"
-    },
-    {
-      "id": 2,
-      "name": "Jugo de Naranja",
-      "price": "1"
-    },
-    {
-      "name": "Jugo de Naranja",
-      "price": "300",
+      "name": "Eliezer Antonio",
+      "price": 77,
       "id": 3
-    },
-    {
-      "name": "Rib Eye 800g",
-      "price": "200",
-      "id": 4
-    },
-    {
-      "name": "Jugo de Fresa",
-      "price": "200",
-      "id": 5
     }
   ]
 }
