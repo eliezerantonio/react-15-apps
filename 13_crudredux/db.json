@@ -1,8 +1,18 @@
 {
   "products": [
     {
-      "name": "Eliezer Antonio",
-      "price": 77,
+      "name": "tequila",
+      "price": 767676,
+      "id": 1
+    },
+    {
+      "name": "tequila",
+      "price": 7776,
+      "id": 2
+    },
+    {
+      "name": "Eventos",
+      "price": 4232,
       "id": 3
     }
   ]

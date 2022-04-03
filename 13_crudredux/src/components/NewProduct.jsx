@@ -60,7 +60,7 @@ const NewProduct = () => {
               <div className="form-group">
                 <label>Price</label>
                 <input
-                  type="number"
+                  type="text"
                   className="form-control"
                   placeholder="Preco Produto"
                   name="price"
